@@ -44,7 +44,7 @@ export const Theme02Component: React.FC<Theme02Props> = () => {
   }, []);
 
   return (
-    <div className="theme-02-root flex flex-col min-h-screen bg-[#0A0D10] text-[#C9D1D9] font-mono selection:bg-[#00F0FF]/30 selection:text-[#00F0FF]">
+    <div className="theme-02-root flex flex-col min-h-screen bg-[#0A0D10] text-[#C9D1D9] font-mono selection:bg-[#00F0FF]/30 selection:text-[#00F0FF] overflow-x-hidden min-w-0 w-full">
       {/* Hardware Boot Sequence Loader */}
       <AnimatePresence>
         {isLoading && (

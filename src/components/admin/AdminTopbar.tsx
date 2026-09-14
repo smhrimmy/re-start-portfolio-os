@@ -64,7 +64,7 @@ export const AdminTopbar: React.FC<AdminTopbarProps> = ({
   const breadcrumbs = getBreadcrumbs();
 
   return (
-    <header className="h-16 bg-[#ececeb]/90 border-b border-black/8 text-[#222222] backdrop-blur-md px-4 sm:px-6 flex items-center justify-between shrink-0 select-none z-30">
+    <header className="h-16 bg-[#ececeb]/90 border-b border-black/8 text-[#222222] backdrop-blur-md px-4 sm:px-6 flex items-center justify-between shrink-0 select-none z-30 w-full min-w-0">
       {/* Left: Breadcrumbs & Autosave */}
       <div className="flex items-center gap-2 sm:gap-3 min-w-0">
         <nav className="flex items-center gap-1 sm:gap-1.5 text-xs truncate" aria-label="Breadcrumb">

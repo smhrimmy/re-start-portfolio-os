@@ -62,7 +62,7 @@ export const Theme01Component: React.FC<Theme01Props> = () => {
   };
 
   return (
-    <div className="theme-01-root flex flex-col min-h-screen">
+    <div className="theme-01-root flex flex-col min-h-screen overflow-x-hidden min-w-0 w-full">
       {/* Initial Skimmable Loader */}
       <AnimatePresence>
         {isLoading && (

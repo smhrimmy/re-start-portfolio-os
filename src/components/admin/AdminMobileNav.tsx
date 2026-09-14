@@ -12,7 +12,7 @@ interface AdminMobileNavProps {
 }
 
 export const AdminMobileNav: React.FC<AdminMobileNavProps> = ({ currentRoute, onNavigate }) => {
-  const [drawerOpen, setDrawerOpen] = useState(false);
+  const [isDrawerOpen, setIsDrawerOpen] = useState(false);
 
   const mainTabs = [
     { label: 'Dash', route: '/admin/dashboard', icon: LayoutDashboard },
@@ -73,14 +73,14 @@ export const AdminMobileNav: React.FC<AdminMobileNavProps> = ({ currentRoute, on
 
   const handleSelectRoute = (route: string) => {
     onNavigate(route);
-    setDrawerOpen(false);
+    setIsDrawerOpen(false);
   };
 
   return (
     <>
       {/* Mobile Fixed Bottom Bar */}
       <nav 
-        className="md:hidden fixed bottom-0 left-0 right-0 h-16 bg-[#ececeb]/95 backdrop-blur-lg border-t border-black/10 flex items-center justify-around z-40 px-2 select-none"
+        className="md:hidden fixed bottom-0 left-0 right-0 h-16 pb-safe bg-[#ececeb]/95 backdrop-blur-lg border-t border-black/10 flex items-center justify-around z-40 px-2 select-none"
         aria-label="Mobile Navigation"
       >
         {mainTabs.map((tab, idx) => {
@@ -103,19 +103,19 @@ export const AdminMobileNav: React.FC<AdminMobileNavProps> = ({ currentRoute, on
 
         {/* More Menu Drawer Trigger */}
         <button
-          onClick={() => setDrawerOpen(!drawerOpen)}
+          onClick={() => setIsDrawerOpen(!isDrawerOpen)}
           data-testid="mobile-nav-more"
           className={`flex flex-col items-center justify-center w-14 py-1 rounded-xl transition-colors ${
-            drawerOpen ? 'text-[#ad314d] font-bold' : 'text-gray-500 hover:text-black'
+            isDrawerOpen ? 'text-[#ad314d] font-bold' : 'text-gray-500 hover:text-black'
           }`}
         >
-          <Menu className={`w-5 h-5 mb-0.5 ${drawerOpen ? 'text-[#ad314d]' : 'text-gray-500'}`} />
+          <Menu className={`w-5 h-5 mb-0.5 ${isDrawerOpen ? 'text-[#ad314d]' : 'text-gray-500'}`} />
           <span className="text-[10px]">More</span>
         </button>
       </nav>
 
       {/* Mobile Full Screen Navigation Sheet */}
-      {drawerOpen && (
+      {isDrawerOpen && (
         <div className="md:hidden fixed inset-0 z-50 bg-[#ececeb]/98 backdrop-blur-xl flex flex-col p-6 overflow-y-auto animate-in fade-in duration-200 text-[#222222]">
           <div className="flex items-center justify-between pb-4 border-b border-black/10">
             <div className="flex items-center gap-2">
@@ -125,7 +125,7 @@ export const AdminMobileNav: React.FC<AdminMobileNavProps> = ({ currentRoute, on
               <span className="font-bold text-sm text-[#1a1a1a]">All Admin OS Modules</span>
             </div>
             <button
-              onClick={() => setDrawerOpen(false)}
+              onClick={() => setIsDrawerOpen(false)}
               className="p-2 rounded-xl bg-black/5 text-gray-600 hover:text-black"
             >
               <X className="w-5 h-5" />
@@ -164,7 +164,7 @@ export const AdminMobileNav: React.FC<AdminMobileNavProps> = ({ currentRoute, on
             <button
               onClick={() => {
                 onNavigate('/');
-                setDrawerOpen(false);
+                setIsDrawerOpen(false);
               }}
               className="w-full py-3 bg-[#1a1a1a] hover:bg-black text-white rounded-xl text-xs font-bold shadow-sm"
             >
