@@ -1,0 +1,79 @@
+/* Theme 01 Minimal Editorial CSS Styles */
+
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=JetBrains+Mono:wght@400;500;700&family=Inter:wght@300;400;500;600;700&display=swap');
+
+.theme-01-root {
+  background-color: #F9F8F6;
+  color: #111111;
+  font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  min-height: 100vh;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.theme-01-display {
+  font-family: 'Playfair Display', Georgia, Garamond, serif;
+}
+
+.theme-01-mono {
+  font-family: 'JetBrains Mono', Courier New, monospace;
+}
+
+/* Thin Editorial Rules */
+.editorial-rule {
+  border-bottom: 1px solid #E2E0D8;
+}
+
+.editorial-rule-dark {
+  border-bottom: 1px solid #111111;
+}
+
+.editorial-rule-vertical {
+  border-right: 1px solid #E2E0D8;
+}
+
+/* Underline Animation on Links & Buttons */
+.editorial-link-hover {
+  position: relative;
+  display: inline-block;
+}
+
+.editorial-link-hover::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 0%;
+  height: 1px;
+  background-color: #111111;
+  transition: width 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.editorial-link-hover:hover::after {
+  width: 100%;
+}
+
+/* Image Crop Reveal */
+.editorial-crop-container {
+  overflow: hidden;
+  position: relative;
+}
+
+.editorial-crop-image {
+  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), filter 0.3s ease;
+}
+
+.editorial-crop-container:hover .editorial-crop-image {
+  transform: scale(1.03);
+}
+
+/* Print Styles */
+@media print {
+  .no-print {
+    display: none !important;
+  }
+  .theme-01-root {
+    background-color: #ffffff !important;
+    color: #000000 !important;
+  }
+}

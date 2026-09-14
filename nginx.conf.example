@@ -1,0 +1,44 @@
+server {
+    listen 80;
+    server_name portfolio-os.yourdomain.com;
+    return 301 https://$host$request_uri;
+}
+
+server {
+    listen 443 ssl http2;
+    server_name portfolio-os.yourdomain.com;
+
+    # SSL Certificates (Managed by Let's Encrypt / Certbot)
+    ssl_certificate /etc/letsencrypt/live/portfolio-os.yourdomain.com/fullchain.pem;
+    ssl_certificate_key /etc/letsencrypt/live/portfolio-os.yourdomain.com/privkey.pem;
+
+    # Performance Compression
+    gzip on;
+    gzip_types text/plain text/css application/json application/javascript text/xml application/xml;
+
+    # Static Frontend Assets
+    location / {
+        root /var/www/portfolio-os/dist;
+        index index.html;
+        try_files $uri $uri/ /index.html;
+    }
+
+    # Static Caching
+    location /assets/ {
+        root /var/www/portfolio-os/dist;
+        expires 1y;
+        add_header Cache-Control "public, immutable";
+    }
+
+    # Reverse Proxy to Express API Server
+    location /api/ {
+        proxy_pass http://127.0.0.1:5000;
+        proxy_http_version 1.1;
+        proxy_set_header Upgrade $http_upgrade;
+        proxy_set_header Connection 'upgrade';
+        proxy_set_header Host $host;
+        proxy_cache_bypass $http_upgrade;
+        proxy_set_header X-Real-IP $remote_addr;
+        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+    }
+}

@@ -1,0 +1,11 @@
+/* Theme Template Design Tokens */
+.theme-template-root {
+  --theme-primary: #3b82f6;
+  --theme-background: #0f172a;
+  --theme-surface: #1e293b;
+  --theme-text: #f8fafc;
+  --theme-accent: #60a5fa;
+
+  color: var(--theme-text);
+  background-color: var(--theme-background);
+}
