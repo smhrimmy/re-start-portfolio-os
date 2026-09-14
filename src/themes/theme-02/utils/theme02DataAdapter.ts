@@ -100,7 +100,7 @@ export function adaptExperience(item: ExperienceItem): Theme02Experience {
     role: item.role,
     company: item.company,
     period: item.period,
-    location: item.location || 'Remote / Global',
+    location: item.location || 'Mangalore, Karnataka, India',
     description: item.description,
     achievements: [
       'Architected resilient frontend and backend services for enterprise platforms',
@@ -123,9 +123,9 @@ export function getTheme02StoreData() {
     ownerProfile: {
       name: 'Prajwal DL',
       title: 'Staff Systems Architect',
-      location: 'San Francisco, CA / Global',
+      location: 'Mangalore, Karnataka, India',
       email: 'prajwal@lucid-borg.dev',
-      github: 'github.com/dlprajwal',
+      github: 'github.com/smhrimmy',
       avatarUrl: 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=300&q=80',
       bio: rawStore.resumeConfig.summary || 'Senior Software Engineer specializing in high-performance web applications, 3D interactive graphics, and resilient backend services.',
     },

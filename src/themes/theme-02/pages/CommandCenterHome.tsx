@@ -211,7 +211,7 @@ export const CommandCenterHome: React.FC = () => {
             </div>
             <div className="flex items-center justify-between">
               <span className="text-[#8B949E]">LOCATION:</span>
-              <span className="text-white">HYBRID / GLOBAL</span>
+              <span className="text-white">MANGALORE, KARNATAKA, INDIA</span>
             </div>
             <div className="flex items-center justify-between">
               <span className="text-[#8B949E]">SECURITY:</span>

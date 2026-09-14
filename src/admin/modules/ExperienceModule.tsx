@@ -140,7 +140,7 @@ export const ExperienceModule: React.FC = () => {
                 type="text"
                 value={location}
                 onChange={(e) => setLocation(e.target.value)}
-                placeholder="San Francisco, CA"
+                placeholder="Mangalore, Karnataka, India"
                 className="w-full bg-[#eaeaea] border border-[#dcdcdc] rounded-lg px-3 py-2 text-sm text-[#1a1a1a]"
               />
             </div>
