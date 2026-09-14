@@ -79,7 +79,7 @@ export const Theme01Component: React.FC<Theme01Props> = () => {
       />
 
       {/* Main Body View Switching with Editorial Transitions */}
-      <main className="flex-1">
+      <main className="flex-1 pb-fixed-nav-safe sm:pb-6">
         <AnimatePresence mode="wait">
           <motion.div
             key={`${currentTab}-${activeSlug}`}

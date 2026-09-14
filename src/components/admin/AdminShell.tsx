@@ -61,7 +61,7 @@ export const AdminShell: React.FC<AdminShellProps> = ({ currentRoute, onNavigate
           onOpenNotifications={() => setIsNotificationsOpen(true)}
         />
 
-        <main className="stage-admin-scope flex-1 overflow-y-auto pb-20 md:pb-6 pb-safe bg-[#ececeb] text-[#222222]">
+        <main className="stage-admin-scope flex-1 overflow-y-auto pb-fixed-nav-safe md:pb-6 bg-[#ececeb] text-[#222222]">
           {children}
         </main>
       </div>

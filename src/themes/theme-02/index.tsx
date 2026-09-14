@@ -56,7 +56,7 @@ export const Theme02Component: React.FC<Theme02Props> = () => {
       <ControlDeckHeader onOpenSearch={() => setIsSearchOpen(true)} />
 
       {/* Main Page Viewport with Framer Motion Route Transitions */}
-      <main className="flex-1 pb-16 lg:pb-6">
+      <main className="flex-1 pb-fixed-nav-safe lg:pb-6">
         <AnimatePresence mode="wait">
           <motion.div
             key={location.pathname}

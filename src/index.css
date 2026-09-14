@@ -44,6 +44,11 @@
   padding-right: env(safe-area-inset-right, 0px);
 }
 
+/* Fixed Bottom Navigation Safe-Area Reservation */
+.pb-fixed-nav-safe {
+  padding-bottom: calc(5rem + env(safe-area-inset-bottom, 0px));
+}
+
 /* Fluid Hero Typography Utility */
 .text-fluid-hero {
   font-size: clamp(2rem, 5vw + 1rem, 4.5rem);
