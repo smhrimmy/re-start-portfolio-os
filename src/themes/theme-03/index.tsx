@@ -13,7 +13,7 @@ import { CaseStudyModal } from './components/CaseStudyModal';
 import './styles/theme03.css';
 
 interface Theme03Props {
-  tier?: DeviceTier;
+  tier: DeviceTier;
 }
 
 export const Theme03Component: React.FC<Theme03Props> = () => {
