@@ -1,14 +1,15 @@
 import { ThemeConfig } from '../types';
-import { theme03Tokens } from './theme03Tokens';
+import { Theme03Component } from './index';
 
 export const theme03Config: ThemeConfig = {
-  id: 'theme-03-archive-desk',
-  layoutArchitecture: 'Tactile Oblique Archive Desk & Collection Stack',
-  navigationPattern: 'Sticky Monospace Chrome + Glossy Navy Pill Action',
-  gridSystem: 'Two-Column Oblique Stage (Pills Left, 3D Box Right)',
-  typographyPairing: 'Instrument Serif + Satoshi Sans',
-  motionLanguage: '3D Folder Skew & Lift, Tactile Sticker Dangle',
-  capabilities: ['Motion-Rich', 'Pointer-Intensive'],
-  fallback: 'theme-01',
-  colorTokens: theme03Tokens,
+  id: 'theme-03',
+  name: 'The Archive Desk',
+  description: 'Tactile physical archive desk portfolio with 3D oblique file box, interactive folder deck, paper design process cards, and glossy navy pills.',
+  version: '1.0.0',
+  author: 'Portfolio OS Core',
+  supports3D: false,
+  minSupportedTier: 'LOW',
+  component: Theme03Component,
 };
+
+export default theme03Config;

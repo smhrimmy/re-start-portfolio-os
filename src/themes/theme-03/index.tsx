@@ -23,7 +23,6 @@ export const Theme03Component: React.FC<Theme03Props> = () => {
   const [selectedCaseStudy, setSelectedCaseStudy] = useState<Project | null>(null);
 
   useEffect(() => {
-    mockStorage.init();
     setIdentity(mockStorage.getIdentity());
     setProjects(mockStorage.getProjects());
 
