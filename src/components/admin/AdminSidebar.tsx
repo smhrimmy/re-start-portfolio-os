@@ -13,13 +13,13 @@ interface AdminSidebarProps {
 }
 
 export const AdminSidebar: React.FC<AdminSidebarProps> = ({ currentRoute, onNavigate }) => {
-  const [collapsed, setCollapsed] = useState<boolean>(() => {
+  const [isCollapsed, setIsCollapsed] = useState<boolean>(() => {
     return localStorage.getItem('pdl_sidebar_collapsed') === 'true';
   });
 
   const toggleCollapsed = () => {
-    const next = !collapsed;
-    setCollapsed(next);
+    const next = !isCollapsed;
+    setIsCollapsed(next);
     localStorage.setItem('pdl_sidebar_collapsed', String(next));
   };
 
@@ -82,7 +82,7 @@ export const AdminSidebar: React.FC<AdminSidebarProps> = ({ currentRoute, onNavi
   return (
     <aside 
       className={`${
-        collapsed ? 'w-20' : 'w-64'
+        isCollapsed ? 'w-20' : 'w-64'
       } bg-[#e8e8e7]/95 border-r border-black/8 flex flex-col h-screen shrink-0 select-none transition-all duration-300 relative z-20 text-[#222222]`}
     >
       {/* Brand Header */}
@@ -95,7 +95,7 @@ export const AdminSidebar: React.FC<AdminSidebarProps> = ({ currentRoute, onNavi
           <div className="w-9 h-9 rounded-xl bg-gradient-to-tr from-[#ad314d] via-[#1a1a1a] to-[#222222] flex items-center justify-center shadow-md shadow-black/10 group-hover:scale-105 transition-transform shrink-0">
             <span className="font-mono text-sm font-bold text-white">PDL</span>
           </div>
-          {!collapsed && (
+          {!isCollapsed && (
             <div className="min-w-0">
               <h2 className="text-sm font-bold tracking-tight text-[#1a1a1a] leading-tight">PORTFOLIO OS</h2>
               <p className="text-[10px] font-mono text-gray-500 truncate">v2.4 · STAGE ENGINE</p>
@@ -107,10 +107,10 @@ export const AdminSidebar: React.FC<AdminSidebarProps> = ({ currentRoute, onNavi
         <button
           onClick={toggleCollapsed}
           className="hidden md:flex p-1.5 rounded-lg bg-black/5 hover:bg-black/10 text-gray-600 hover:text-black transition-colors"
-          title={collapsed ? 'Expand sidebar' : 'Collapse sidebar'}
+          title={isCollapsed ? 'Expand sidebar' : 'Collapse sidebar'}
           data-testid="admin-sidebar-toggle"
         >
-          {collapsed ? <ChevronRight className="w-4 h-4" /> : <ChevronLeft className="w-4 h-4" />}
+          {isCollapsed ? <ChevronRight className="w-4 h-4" /> : <ChevronLeft className="w-4 h-4" />}
         </button>
       </div>
 
@@ -118,7 +118,7 @@ export const AdminSidebar: React.FC<AdminSidebarProps> = ({ currentRoute, onNavi
       <div className="flex-1 overflow-y-auto px-3 py-4 space-y-5 no-scrollbar">
         {navSections.map((sec, sIdx) => (
           <div key={sIdx}>
-            {!collapsed ? (
+            {!isCollapsed ? (
               <p className="px-3 text-[10px] font-mono tracking-wider text-gray-500 uppercase mb-2">
                 {sec.label}
               </p>
@@ -133,10 +133,10 @@ export const AdminSidebar: React.FC<AdminSidebarProps> = ({ currentRoute, onNavi
                   <button
                     key={iIdx}
                     onClick={() => onNavigate(item.route)}
-                    title={collapsed ? item.label : undefined}
+                    title={isCollapsed ? item.label : undefined}
                     data-testid={`admin-nav-${item.route.replace('/admin/', '').replace('/', '-')}`}
                     className={`w-full flex items-center ${
-                      collapsed ? 'justify-center px-2 py-2.5' : 'gap-3 px-3 py-2'
+                      isCollapsed ? 'justify-center px-2 py-2.5' : 'gap-3 px-3 py-2'
                     } rounded-xl text-xs font-medium transition-all ${
                       isActive 
                         ? 'bg-white text-[#ad314d] border border-black/10 font-bold shadow-sm' 
@@ -144,7 +144,7 @@ export const AdminSidebar: React.FC<AdminSidebarProps> = ({ currentRoute, onNavi
                     }`}
                   >
                     <Icon className={`w-4 h-4 shrink-0 ${isActive ? 'text-[#ad314d]' : 'text-gray-500'}`} />
-                    {!collapsed && <span className="truncate">{item.label}</span>}
+                    {!isCollapsed && <span className="truncate">{item.label}</span>}
                   </button>
                 );
               })}
@@ -157,13 +157,13 @@ export const AdminSidebar: React.FC<AdminSidebarProps> = ({ currentRoute, onNavi
       <div className="p-3 border-t border-black/8 bg-[#dfdfde]">
         <div 
           onClick={() => onNavigate('/admin/profile')}
-          className={`flex items-center ${collapsed ? 'justify-center' : 'gap-3'} p-2 rounded-xl bg-white/70 hover:bg-white border border-black/5 shadow-sm transition-colors cursor-pointer`}
+          className={`flex items-center ${isCollapsed ? 'justify-center' : 'gap-3'} p-2 rounded-xl bg-white/70 hover:bg-white border border-black/5 shadow-sm transition-colors cursor-pointer`}
           title="Owner Profile & Credentials"
         >
           <div className="w-7 h-7 rounded-lg bg-[#ad314d]/15 text-[#ad314d] flex items-center justify-center font-bold text-xs shrink-0">
             P
           </div>
-          {!collapsed && (
+          {!isCollapsed && (
             <div className="flex-1 min-w-0">
               <p className="text-xs font-semibold text-[#1a1a1a] truncate">Prajwal DL</p>
               <p className="text-[10px] text-gray-500 truncate">Systems Architect</p>

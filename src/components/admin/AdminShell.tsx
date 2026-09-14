@@ -15,26 +15,28 @@ interface AdminShellProps {
 }
 
 export const AdminShell: React.FC<AdminShellProps> = ({ currentRoute, onNavigate, children }) => {
-  const [commandOpen, setCommandOpen] = useState(false);
-  const [contentSearchOpen, setContentSearchOpen] = useState(false);
-  const [shortcutsOpen, setShortcutsOpen] = useState(false);
-  const [notificationsOpen, setNotificationsOpen] = useState(false);
-  const [showTour, setShowTour] = useState(false);
+  const [isCommandOpen, setIsCommandOpen] = useState(false);
+  const [isContentSearchOpen, setIsContentSearchOpen] = useState(false);
+  const [isShortcutsOpen, setIsShortcutsOpen] = useState(false);
+  const [isNotificationsOpen, setIsNotificationsOpen] = useState(false);
+  const [isTourVisible, setIsTourVisible] = useState(false);
 
   useEffect(() => {
-    const completed = localStorage.getItem('pdl_tour_completed');
-    if (!completed) {
-      setShowTour(true);
+    const isCompleted = localStorage.getItem('pdl_tour_completed') === 'true';
+    if (!isCompleted) {
+      setIsTourVisible(true);
     }
 
     const handleKey = (e: KeyboardEvent) => {
-      if (e.key === '?' && !['INPUT', 'TEXTAREA'].includes((e.target as HTMLElement).tagName)) {
+      const targetTag = (e.target as HTMLElement).tagName;
+      if (['INPUT', 'TEXTAREA'].includes(targetTag)) return;
+
+      if (e.key === '?') {
         e.preventDefault();
-        setShortcutsOpen(prev => !prev);
-      }
-      if (e.key === '/' && !['INPUT', 'TEXTAREA'].includes((e.target as HTMLElement).tagName)) {
+        setIsShortcutsOpen(prev => !prev);
+      } else if (e.key === '/') {
         e.preventDefault();
-        setContentSearchOpen(prev => !prev);
+        setIsContentSearchOpen(prev => !prev);
       }
     };
     window.addEventListener('keydown', handleKey);
@@ -42,7 +44,7 @@ export const AdminShell: React.FC<AdminShellProps> = ({ currentRoute, onNavigate
   }, []);
 
   return (
-    <div className="stage-admin-scope flex h-screen bg-[#ececeb] text-[#222222] overflow-hidden font-sans">
+    <div className="stage-admin-scope flex h-screen bg-[#ececeb] text-[#222222] overflow-hidden font-sans pt-safe pl-safe pr-safe">
       {/* Desktop Sidebar */}
       <div className="hidden md:flex">
         <AdminSidebar currentRoute={currentRoute} onNavigate={onNavigate} />
@@ -53,13 +55,13 @@ export const AdminShell: React.FC<AdminShellProps> = ({ currentRoute, onNavigate
         <AdminTopbar
           currentRoute={currentRoute}
           onNavigate={onNavigate}
-          onOpenCommandPalette={() => setCommandOpen(true)}
-          onOpenContentSearch={() => setContentSearchOpen(true)}
-          onOpenShortcuts={() => setShortcutsOpen(true)}
-          onOpenNotifications={() => setNotificationsOpen(true)}
+          onOpenCommandPalette={() => setIsCommandOpen(true)}
+          onOpenContentSearch={() => setIsContentSearchOpen(true)}
+          onOpenShortcuts={() => setIsShortcutsOpen(true)}
+          onOpenNotifications={() => setIsNotificationsOpen(true)}
         />
 
-        <main className="stage-admin-scope flex-1 overflow-y-auto pb-20 md:pb-6 bg-[#ececeb] text-[#222222]">
+        <main className="stage-admin-scope flex-1 overflow-y-auto pb-20 md:pb-6 pb-safe bg-[#ececeb] text-[#222222]">
           {children}
         </main>
       </div>
@@ -68,11 +70,11 @@ export const AdminShell: React.FC<AdminShellProps> = ({ currentRoute, onNavigate
       <AdminMobileNav currentRoute={currentRoute} onNavigate={onNavigate} />
 
       {/* Overlays */}
-      <CommandPalette isOpen={commandOpen} onClose={() => setCommandOpen(false)} onNavigate={onNavigate} />
-      <ContentSearchModal isOpen={contentSearchOpen} onClose={() => setContentSearchOpen(false)} onNavigate={onNavigate} />
-      <ShortcutsHelpModal isOpen={shortcutsOpen} onClose={() => setShortcutsOpen(false)} />
-      <NotificationDrawer isOpen={notificationsOpen} onClose={() => setNotificationsOpen(false)} onNavigate={onNavigate} />
-      {showTour && <OnboardingTour onComplete={() => setShowTour(false)} />}
+      <CommandPalette isOpen={isCommandOpen} onClose={() => setIsCommandOpen(false)} onNavigate={onNavigate} />
+      <ContentSearchModal isOpen={isContentSearchOpen} onClose={() => setIsContentSearchOpen(false)} onNavigate={onNavigate} />
+      <ShortcutsHelpModal isOpen={isShortcutsOpen} onClose={() => setIsShortcutsOpen(false)} />
+      <NotificationDrawer isOpen={isNotificationsOpen} onClose={() => setIsNotificationsOpen(false)} onNavigate={onNavigate} />
+      {isTourVisible && <OnboardingTour onComplete={() => setIsTourVisible(false)} />}
     </div>
   );
 };
