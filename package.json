@@ -5,7 +5,9 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "tsc && vite build",
+    "lint:colors": "node scripts/enforce-color-tokens.js",
+    "verify:contrast": "node scripts/verify-token-contrast.js",
+    "build": "node scripts/enforce-color-tokens.js && node scripts/verify-token-contrast.js && tsc && vite build",
     "lint": "tsc --noEmit",
     "preview": "vite preview",
     "server": "node --import tsx/esm server/index.ts",
