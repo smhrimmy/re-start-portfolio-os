@@ -50,27 +50,27 @@ export const THEME_MANIFESTS: ThemeManifest[] = [
     }
   },
   {
-    id: 'theme-03-cyberpunk-hud',
+    id: 'theme-03-archive-desk',
     number: '03',
-    name: 'UX/UI Designer (Ava Chen)',
+    name: 'The Archive Desk',
     category: 'Minimalist',
-    concept: 'Design-system-aware product portfolio with alternating case-study showcase cards, 4-step process flow, and outcome metrics.',
-    capabilities: ['Motion-Rich'],
+    concept: 'Tactile physical archive desk portfolio with 3D oblique file box, interactive folder deck, paper design process cards, and glossy navy pills.',
+    capabilities: ['Motion-Rich', 'Pointer-Intensive'],
     performance: 'Light',
-    layoutArchitecture: 'UX/UI Designer Portfolio',
-    navigationPattern: 'Indigo Pill Accent + Sticky Backdrop Header',
-    gridSystem: 'Alternating Case Study Stack + 4-Step Process Flow',
-    typographyPairing: 'DM Sans + Inter',
-    signatureInteraction: '4-step methodology interactive flow and verified result metrics',
-    motionModel: 'Soft shadow elevations and crisp layout shifts',
+    layoutArchitecture: 'Tactile Oblique Archive Stage & Pill Collection Stack',
+    navigationPattern: 'Sticky Monospace Chrome + Glossy Navy Pill Action',
+    gridSystem: 'Two-Column Oblique Stage (Pills Left, 3D Box Right)',
+    typographyPairing: 'Instrument Serif + Satoshi Sans',
+    signatureInteraction: '3D archive box folder skew & lift, tactile process sticker dangle',
+    motionModel: 'Physical folder lift and smooth dialog popups',
     uses3D: false,
     defaultTokens: {
-      bgPrimary: '#fafafa',
-      bgSecondary: '#ffffff',
-      accent: '#6366f1',
-      textPrimary: '#1f2937',
-      textMuted: '#6b7280',
-      borderColor: '#e5e7eb'
+      bgPrimary: '#FFFFFF',
+      bgSecondary: '#FCFCFA',
+      accent: '#3054DE',
+      textPrimary: '#18203A',
+      textMuted: '#536083',
+      borderColor: 'rgba(24, 32, 58, 0.14)'
     }
   },
   {
