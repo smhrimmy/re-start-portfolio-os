@@ -83,7 +83,7 @@ export const PagesCMSPage: React.FC<PagesCMSPageProps> = ({ onNavigate }) => {
         </div>
       )}
 
-      <div className="bg-[#0e131f] border border-white/5 rounded-2xl overflow-hidden divide-y divide-white/5">
+      <div className="bg-[#f4f4f3] border border-[#dcdcdc] rounded-2xl overflow-hidden divide-y divide-[#dcdcdc] shadow-2xs">
         {pages.map(page => (
           <div key={page.id} className="p-5 flex items-center justify-between hover:bg-white/2 transition-colors">
             <div className="space-y-1">
@@ -132,7 +132,7 @@ export const PagesCMSPage: React.FC<PagesCMSPageProps> = ({ onNavigate }) => {
 
       {editingPage && (
         <div className="fixed inset-0 z-50 bg-black/70 backdrop-blur-sm flex items-center justify-center p-4">
-          <div className="bg-[#0e131f] border border-white/10 rounded-2xl max-w-xl w-full p-6 space-y-4 shadow-2xl">
+          <div className="bg-white border border-[#dcdcdc] rounded-2xl max-w-xl w-full p-6 space-y-4 shadow-2xl">
             <div className="flex items-center justify-between pb-3 border-b border-white/5">
               <h2 className="text-base font-bold text-white">
                 {isNew ? 'Create Standalone Page' : `Edit: ${editingPage.title}`}

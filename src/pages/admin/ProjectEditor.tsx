@@ -145,7 +145,7 @@ export const ProjectEditor: React.FC<ProjectEditorProps> = ({ projectId, onNavig
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
         {/* Main Fields (Left 2 Cols) */}
         <div className="lg:col-span-2 space-y-5">
-          <div className="bg-[#0e131f] p-5 rounded-2xl border border-white/5 space-y-4">
+          <div className="bg-[#f4f4f3] p-5 rounded-2xl border border-[#dcdcdc] space-y-4 shadow-2xs">
             <div>
               <label className="text-xs font-mono text-gray-400 uppercase">Project Title</label>
               <input
@@ -208,7 +208,7 @@ export const ProjectEditor: React.FC<ProjectEditorProps> = ({ projectId, onNavig
           </div>
 
           {/* Links & Repository */}
-          <div className="bg-[#0e131f] p-5 rounded-2xl border border-white/5 space-y-4">
+          <div className="bg-[#f4f4f3] p-5 rounded-2xl border border-[#dcdcdc] space-y-4 shadow-2xs">
             <h3 className="text-xs font-mono text-gray-400 uppercase tracking-wider">Deployment & Code Links</h3>
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
               <div>
@@ -243,7 +243,7 @@ export const ProjectEditor: React.FC<ProjectEditorProps> = ({ projectId, onNavig
         {/* Sidebar Settings (Right Col) */}
         <div className="space-y-5">
           {/* Status & Featured */}
-          <div className="bg-[#0e131f] p-5 rounded-2xl border border-white/5 space-y-4">
+          <div className="bg-[#f4f4f3] p-5 rounded-2xl border border-[#dcdcdc] space-y-4 shadow-2xs">
             <h3 className="text-xs font-mono text-gray-400 uppercase tracking-wider">Publishing Lifecycle</h3>
             
             <div>
@@ -285,7 +285,7 @@ export const ProjectEditor: React.FC<ProjectEditorProps> = ({ projectId, onNavig
           </div>
 
           {/* Technologies Tag Manager */}
-          <div className="bg-[#0e131f] p-5 rounded-2xl border border-white/5 space-y-3">
+          <div className="bg-[#f4f4f3] p-5 rounded-2xl border border-[#dcdcdc] space-y-3 shadow-2xs">
             <h3 className="text-xs font-mono text-gray-400 uppercase tracking-wider">Technologies Used</h3>
             <div className="flex flex-wrap gap-1.5">
               {technologies.map((t, idx) => (
@@ -317,7 +317,7 @@ export const ProjectEditor: React.FC<ProjectEditorProps> = ({ projectId, onNavig
           </div>
 
           {/* Cover Media */}
-          <div className="bg-[#0e131f] p-5 rounded-2xl border border-white/5 space-y-3">
+          <div className="bg-[#f4f4f3] p-5 rounded-2xl border border-[#dcdcdc] space-y-3 shadow-2xs">
             <h3 className="text-xs font-mono text-gray-400 uppercase tracking-wider">Cover Media</h3>
             <div className="h-32 w-full rounded-xl overflow-hidden bg-slate-900 border border-white/10">
               <img src={coverImage} alt="Cover" className="w-full h-full object-cover" />

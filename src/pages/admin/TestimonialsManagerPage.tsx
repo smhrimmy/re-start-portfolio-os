@@ -151,7 +151,7 @@ export const TestimonialsManagerPage: React.FC = () => {
         {filteredItems.map(t => {
           const status = t.status || 'approved';
           return (
-            <div key={t.id} className="p-5 rounded-2xl bg-[#0e131f] border border-white/5 flex flex-col justify-between space-y-4 hover:border-white/10 transition-colors">
+            <div key={t.id} className="p-5 rounded-2xl bg-[#f4f4f3] border border-[#dcdcdc] flex flex-col justify-between space-y-4 hover:border-black/20 transition-colors shadow-2xs">
               <div className="space-y-3">
                 <div className="flex items-center justify-between">
                   <div className="flex items-center gap-1">
@@ -233,7 +233,7 @@ export const TestimonialsManagerPage: React.FC = () => {
 
       {showRequestModal && (
         <div className="fixed inset-0 z-50 bg-black/70 backdrop-blur-sm flex items-center justify-center p-4">
-          <div className="bg-[#0e131f] border border-white/10 rounded-2xl max-w-md w-full p-6 space-y-4 shadow-2xl">
+          <div className="bg-white border border-[#dcdcdc] rounded-2xl max-w-md w-full p-6 space-y-4 shadow-2xl">
             <div className="flex items-center justify-between pb-3 border-b border-white/5">
               <h2 className="text-base font-bold text-white flex items-center gap-2">
                 <Link className="w-4 h-4 text-emerald-400" /> Shareable Testimonial Link
@@ -272,7 +272,7 @@ export const TestimonialsManagerPage: React.FC = () => {
 
       {editingItem && (
         <div className="fixed inset-0 z-50 bg-black/70 backdrop-blur-sm flex items-center justify-center p-4">
-          <div className="bg-[#0e131f] border border-white/10 rounded-2xl max-w-lg w-full p-6 space-y-4 shadow-2xl">
+          <div className="bg-white border border-[#dcdcdc] rounded-2xl max-w-lg w-full p-6 space-y-4 shadow-2xl">
             <div className="flex items-center justify-between pb-3 border-b border-white/5">
               <h2 className="text-base font-bold text-white">
                 {isNew ? 'Create Testimonial' : 'Edit Testimonial'}

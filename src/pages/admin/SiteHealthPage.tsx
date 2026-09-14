@@ -70,7 +70,7 @@ export const SiteHealthPage: React.FC = () => {
         </button>
       </div>
 
-      <div className="bg-[#0e131f] border border-white/5 rounded-2xl p-6 flex flex-col sm:flex-row items-center justify-between gap-6">
+      <div className="bg-[#f4f4f3] border border-[#dcdcdc] rounded-2xl p-6 flex flex-col sm:flex-row items-center justify-between gap-6 shadow-2xs">
         <div className="flex items-center gap-4">
           <div className="w-16 h-16 rounded-2xl bg-emerald-500/15 text-emerald-400 flex items-center justify-center font-black text-2xl border border-emerald-500/20">
             98%
@@ -89,7 +89,7 @@ export const SiteHealthPage: React.FC = () => {
         <h3 className="text-sm font-bold text-white uppercase tracking-wider">Health Checks Breakdown</h3>
         <div className="space-y-3">
           {checks.map(c => (
-            <div key={c.id} className="p-5 rounded-2xl bg-[#0e131f] border border-white/5 flex items-start gap-4">
+            <div key={c.id} className="p-5 rounded-2xl bg-[#f4f4f3] border border-[#dcdcdc] flex items-start gap-4 shadow-2xs">
               {c.passed ? (
                 <CheckCircle2 className="w-5 h-5 text-emerald-400 shrink-0 mt-0.5" />
               ) : (

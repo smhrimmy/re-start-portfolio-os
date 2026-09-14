@@ -102,43 +102,43 @@ export const AnalyticsPage: React.FC = () => {
 
       {/* High-Level Metrics Row */}
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
-        <div className="bg-[#0e131f] border border-white/5 rounded-2xl p-5">
-          <p className="text-xs font-mono text-gray-400 uppercase mb-2">Total Pageviews</p>
-          <p className="text-3xl font-black text-white">{trafficData.pageviews}</p>
-          <span className="text-[11px] font-mono text-emerald-400 mt-1 flex items-center gap-1">
-            <TrendingUp className="w-3 h-3" /> +18.4% vs prev period
+        <div className="bg-[#f4f4f3] border border-[#dcdcdc] rounded-2xl p-5 shadow-2xs">
+          <p className="text-xs font-mono text-[#55555e] uppercase mb-2">Total Pageviews</p>
+          <p className="text-3xl font-black text-[#1a1a1a]">{trafficData.pageviews}</p>
+          <span className="text-[11px] font-mono text-emerald-800 mt-1 flex items-center gap-1 font-semibold">
+            <TrendingUp className="w-3 h-3 text-emerald-700" /> +18.4% vs prev period
           </span>
         </div>
 
-        <div className="bg-[#0e131f] border border-white/5 rounded-2xl p-5">
-          <p className="text-xs font-mono text-gray-400 uppercase mb-2">Unique Recruiters & Devs</p>
-          <p className="text-3xl font-black text-white">{trafficData.visitors}</p>
-          <span className="text-[11px] font-mono text-blue-400 mt-1 flex items-center gap-1">
-            <Users className="w-3 h-3" /> 84 distinct orgs
+        <div className="bg-[#f4f4f3] border border-[#dcdcdc] rounded-2xl p-5 shadow-2xs">
+          <p className="text-xs font-mono text-[#55555e] uppercase mb-2">Unique Recruiters & Devs</p>
+          <p className="text-3xl font-black text-[#1a1a1a]">{trafficData.visitors}</p>
+          <span className="text-[11px] font-mono text-blue-800 mt-1 flex items-center gap-1 font-semibold">
+            <Users className="w-3 h-3 text-blue-700" /> 84 distinct orgs
           </span>
         </div>
 
-        <div className="bg-[#0e131f] border border-white/5 rounded-2xl p-5">
-          <p className="text-xs font-mono text-gray-400 uppercase mb-2">Avg Session Duration</p>
-          <p className="text-3xl font-black text-white">{trafficData.duration}</p>
-          <span className="text-[11px] font-mono text-gray-400 mt-1 flex items-center gap-1">
-            <Clock className="w-3 h-3" /> High engagement rate
+        <div className="bg-[#f4f4f3] border border-[#dcdcdc] rounded-2xl p-5 shadow-2xs">
+          <p className="text-xs font-mono text-[#55555e] uppercase mb-2">Avg Session Duration</p>
+          <p className="text-3xl font-black text-[#1a1a1a]">{trafficData.duration}</p>
+          <span className="text-[11px] font-mono text-[#55555e] mt-1 flex items-center gap-1 font-medium">
+            <Clock className="w-3 h-3 text-[#777780]" /> High engagement rate
           </span>
         </div>
 
-        <div className="bg-[#0e131f] border border-white/5 rounded-2xl p-5">
-          <p className="text-xs font-mono text-gray-400 uppercase mb-2">Bounce Rate</p>
-          <p className="text-3xl font-black text-white">{trafficData.bounceRate}</p>
-          <span className="text-[11px] font-mono text-emerald-400 mt-1">Excellent retention</span>
+        <div className="bg-[#f4f4f3] border border-[#dcdcdc] rounded-2xl p-5 shadow-2xs">
+          <p className="text-xs font-mono text-[#55555e] uppercase mb-2">Bounce Rate</p>
+          <p className="text-3xl font-black text-[#1a1a1a]">{trafficData.bounceRate}</p>
+          <span className="text-[11px] font-mono text-emerald-800 mt-1 font-semibold">Excellent retention</span>
         </div>
       </div>
 
       {/* Traffic Chart */}
-      <div className="bg-[#0e131f] border border-white/5 rounded-3xl p-5 sm:p-8 space-y-4">
+      <div className="bg-[#f4f4f3] border border-[#dcdcdc] rounded-3xl p-5 sm:p-8 space-y-4 shadow-2xs">
         <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2">
           <div>
-            <h3 className="text-sm font-bold text-white uppercase tracking-wider">Traffic Volume Over Time</h3>
-            <p className="text-xs text-gray-400 mt-0.5">Continuous request volume across active period.</p>
+            <h3 className="text-sm font-bold text-[#1a1a1a] uppercase tracking-wider">Traffic Volume Over Time</h3>
+            <p className="text-xs text-[#55555e] mt-0.5">Continuous request volume across active period.</p>
           </div>
           <span className="text-xs font-mono text-[#ad314d] font-bold self-start sm:self-auto">Peak Volume: Day 5</span>
         </div>
@@ -149,14 +149,14 @@ export const AnalyticsPage: React.FC = () => {
             const heightPercent = Math.round((val / maxVal) * 100);
             return (
               <div key={idx} className="flex-1 flex flex-col items-center gap-2 group h-full justify-end">
-                <div className="text-[10px] font-mono text-gray-500 opacity-0 group-hover:opacity-100 transition-opacity">
+                <div className="text-[10px] font-mono text-[#55555e] opacity-0 group-hover:opacity-100 transition-opacity font-bold">
                   {val}
                 </div>
                 <div
-                  className="w-full bg-gradient-to-t from-blue-600/50 to-blue-500 group-hover:to-blue-400 rounded-t-lg transition-all"
+                  className="w-full bg-[#1a1a1a] group-hover:bg-[#ad314d] rounded-t-lg transition-all"
                   style={{ height: `${heightPercent}%` }}
                 />
-                <span className="text-[10px] font-mono text-gray-500">P{idx + 1}</span>
+                <span className="text-[10px] font-mono text-[#55555e]">P{idx + 1}</span>
               </div>
             );
           })}
@@ -166,8 +166,8 @@ export const AnalyticsPage: React.FC = () => {
       {/* Two-Column Grid: Traffic Acquisition Sources & Top Visited Case Studies */}
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
         {/* Traffic Sources */}
-        <div className="lg:col-span-6 bg-[#0e131f] border border-white/5 rounded-3xl p-6 sm:p-8 space-y-5">
-          <h3 className="text-sm font-bold text-white uppercase tracking-wider pb-3 border-b border-white/5">
+        <div className="lg:col-span-6 bg-[#f4f4f3] border border-[#dcdcdc] rounded-3xl p-6 sm:p-8 space-y-5 shadow-2xs">
+          <h3 className="text-sm font-bold text-[#1a1a1a] uppercase tracking-wider pb-3 border-b border-black/8">
             Traffic Acquisition Sources
           </h3>
 
@@ -175,15 +175,15 @@ export const AnalyticsPage: React.FC = () => {
             {sources.map((src, idx) => (
               <div key={idx} className="space-y-1.5">
                 <div className="flex items-center justify-between text-xs">
-                  <span className="font-semibold text-white">{src.source}</span>
+                  <span className="font-semibold text-[#1a1a1a]">{src.source}</span>
                   <div className="flex items-center gap-3 font-mono">
-                    <span className="text-gray-400">{src.visitors} visits</span>
-                    <span className="text-emerald-400">{src.change}</span>
+                    <span className="text-[#55555e]">{src.visitors} visits</span>
+                    <span className="text-emerald-800 font-bold">{src.change}</span>
                   </div>
                 </div>
-                <div className="w-full h-2 rounded-full bg-white/5 overflow-hidden">
+                <div className="w-full h-2 rounded-full bg-black/8 overflow-hidden">
                   <div
-                    className="h-full bg-blue-600 rounded-full"
+                    className="h-full bg-[#1a1a1a] rounded-full"
                     style={{ width: `${src.percentage}%` }}
                   />
                 </div>
@@ -192,46 +192,46 @@ export const AnalyticsPage: React.FC = () => {
           </div>
 
           {/* Device Breakdown */}
-          <div className="pt-4 border-t border-white/5 grid grid-cols-3 gap-3 text-center text-xs">
-            <div className="p-3 rounded-xl bg-white/5 border border-white/5 space-y-1">
-              <Monitor className="w-4 h-4 text-blue-400 mx-auto" />
-              <p className="font-bold text-white">68%</p>
-              <p className="text-[10px] text-gray-400 font-mono">Desktop</p>
+          <div className="pt-4 border-t border-black/8 grid grid-cols-3 gap-3 text-center text-xs">
+            <div className="p-3 rounded-xl bg-white border border-[#dcdcdc] space-y-1">
+              <Monitor className="w-4 h-4 text-[#1a1a1a] mx-auto" />
+              <p className="font-bold text-[#1a1a1a]">68%</p>
+              <p className="text-[10px] text-[#55555e] font-mono">Desktop</p>
             </div>
-            <div className="p-3 rounded-xl bg-white/5 border border-white/5 space-y-1">
-              <Smartphone className="w-4 h-4 text-emerald-400 mx-auto" />
-              <p className="font-bold text-white">26%</p>
-              <p className="text-[10px] text-gray-400 font-mono">Mobile</p>
+            <div className="p-3 rounded-xl bg-white border border-[#dcdcdc] space-y-1">
+              <Smartphone className="w-4 h-4 text-emerald-700 mx-auto" />
+              <p className="font-bold text-[#1a1a1a]">26%</p>
+              <p className="text-[10px] text-[#55555e] font-mono">Mobile</p>
             </div>
-            <div className="p-3 rounded-xl bg-white/5 border border-white/5 space-y-1">
-              <Tablet className="w-4 h-4 text-purple-400 mx-auto" />
-              <p className="font-bold text-white">6%</p>
-              <p className="text-[10px] text-gray-400 font-mono">Tablet</p>
+            <div className="p-3 rounded-xl bg-white border border-[#dcdcdc] space-y-1">
+              <Tablet className="w-4 h-4 text-purple-700 mx-auto" />
+              <p className="font-bold text-[#1a1a1a]">6%</p>
+              <p className="text-[10px] text-[#55555e] font-mono">Tablet</p>
             </div>
           </div>
         </div>
 
         {/* Top Case Studies & Geography */}
-        <div className="lg:col-span-6 bg-[#0e131f] border border-white/5 rounded-3xl p-6 sm:p-8 space-y-5">
-          <h3 className="text-sm font-bold text-white uppercase tracking-wider pb-3 border-b border-white/5">
+        <div className="lg:col-span-6 bg-[#f4f4f3] border border-[#dcdcdc] rounded-3xl p-6 sm:p-8 space-y-5 shadow-2xs">
+          <h3 className="text-sm font-bold text-[#1a1a1a] uppercase tracking-wider pb-3 border-b border-black/8">
             Top Visited Case Studies
           </h3>
 
-          <div className="divide-y divide-white/5 text-xs">
+          <div className="divide-y divide-black/8 text-xs">
             {topPages.map((page, idx) => (
               <div key={idx} className="py-3 flex items-center justify-between gap-4">
                 <div className="min-w-0">
-                  <p className="font-bold text-white truncate">{page.title}</p>
-                  <p className="text-[11px] font-mono text-gray-500 truncate">{page.path}</p>
+                  <p className="font-bold text-[#1a1a1a] truncate">{page.title}</p>
+                  <p className="text-[11px] font-mono text-[#55555e] truncate">{page.path}</p>
                 </div>
                 <div className="flex items-center gap-4 shrink-0 font-mono text-right">
                   <div>
-                    <p className="text-white font-bold">{page.views}</p>
-                    <p className="text-[10px] text-gray-500">views</p>
+                    <p className="text-[#1a1a1a] font-bold">{page.views}</p>
+                    <p className="text-[10px] text-[#55555e]">views</p>
                   </div>
                   <div>
-                    <p className="text-gray-300">{page.time}</p>
-                    <p className="text-[10px] text-gray-500">avg time</p>
+                    <p className="text-[#333339] font-medium">{page.time}</p>
+                    <p className="text-[10px] text-[#55555e]">avg time</p>
                   </div>
                 </div>
               </div>
@@ -239,16 +239,16 @@ export const AnalyticsPage: React.FC = () => {
           </div>
 
           {/* Geography */}
-          <div className="pt-4 border-t border-white/5">
-            <h4 className="text-xs font-mono text-gray-400 uppercase tracking-widest mb-3">Top Geographic Regions</h4>
+          <div className="pt-4 border-t border-black/8">
+            <h4 className="text-xs font-mono text-[#55555e] uppercase tracking-widest mb-3">Top Geographic Regions</h4>
             <div className="grid grid-cols-2 sm:grid-cols-3 gap-2 text-xs">
               {countries.map((c, idx) => (
-                <div key={idx} className="p-2.5 rounded-xl bg-white/5 border border-white/5 flex items-center justify-between">
+                <div key={idx} className="p-2.5 rounded-xl bg-white border border-[#dcdcdc] flex items-center justify-between">
                   <div className="flex items-center gap-1.5">
                     <span>{c.flag}</span>
-                    <span className="text-gray-300 truncate max-w-[80px]">{c.country}</span>
+                    <span className="text-[#1a1a1a] font-medium truncate max-w-[80px]">{c.country}</span>
                   </div>
-                  <span className="font-mono text-blue-400 text-[11px] font-bold">{c.percent}</span>
+                  <span className="font-mono text-blue-800 text-[11px] font-bold">{c.percent}</span>
                 </div>
               ))}
             </div>

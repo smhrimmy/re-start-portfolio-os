@@ -254,7 +254,7 @@ export const BlogEditor: React.FC<BlogEditorProps> = ({ postId, onNavigate }) =>
       </div>
 
       {/* Title & Excerpt header */}
-      <div className="space-y-3 bg-[#0e131f] p-6 rounded-2xl border border-white/5">
+      <div className="space-y-3 bg-[#f4f4f3] p-6 rounded-2xl border border-[#dcdcdc] shadow-2xs">
         <input
           type="text"
           value={title}
@@ -263,7 +263,7 @@ export const BlogEditor: React.FC<BlogEditorProps> = ({ postId, onNavigate }) =>
             if (isNew) setSlug(e.target.value.toLowerCase().replace(/\s+/g, '-'));
           }}
           placeholder="Article Title..."
-          className="w-full bg-transparent text-2xl sm:text-3xl font-bold text-white focus:outline-none placeholder-gray-600 tracking-tight"
+          className="w-full bg-transparent text-2xl sm:text-3xl font-bold text-[#1a1a1a] focus:outline-none placeholder-gray-400 tracking-tight"
         />
 
         <textarea
@@ -271,7 +271,7 @@ export const BlogEditor: React.FC<BlogEditorProps> = ({ postId, onNavigate }) =>
           value={excerpt}
           onChange={e => setExcerpt(e.target.value)}
           placeholder="Excerpt / Deck / Sub-headline..."
-          className="w-full bg-transparent text-sm text-gray-300 focus:outline-none placeholder-gray-600 leading-relaxed resize-none"
+          className="w-full bg-transparent text-sm text-[#333339] focus:outline-none placeholder-gray-400 leading-relaxed resize-none font-medium"
         />
       </div>
 
@@ -282,7 +282,7 @@ export const BlogEditor: React.FC<BlogEditorProps> = ({ postId, onNavigate }) =>
           {blocks.map((block, idx) => (
             <div 
               key={block.id} 
-              className="relative group bg-[#0e131f]/60 hover:bg-[#0e131f] border border-white/5 hover:border-white/10 rounded-2xl p-5 transition-all"
+              className="relative group bg-[#f4f4f3] hover:bg-white border border-[#dcdcdc] hover:border-black/20 rounded-2xl p-5 transition-all shadow-2xs"
             >
               {/* Block Action Controls on Hover */}
               <div className="absolute top-3 right-3 opacity-0 group-hover:opacity-100 flex items-center gap-1 bg-[#111827] border border-white/10 p-1 rounded-xl shadow-lg transition-opacity z-10">
@@ -580,22 +580,22 @@ export const BlogEditor: React.FC<BlogEditorProps> = ({ postId, onNavigate }) =>
         {!focusMode && (
           <div className="space-y-5">
             {/* Panel Selector Tabs */}
-            <div className="flex items-center bg-[#0e131f] p-1 rounded-2xl border border-white/5 text-xs">
+            <div className="flex items-center bg-[#f4f4f3] p-1 rounded-2xl border border-[#dcdcdc] text-xs shadow-2xs">
               <button
                 onClick={() => setShowSidePanel('seo')}
-                className={`flex-1 py-1.5 rounded-xl font-medium transition-colors ${showSidePanel === 'seo' ? 'bg-blue-600 text-white' : 'text-gray-400 hover:text-white'}`}
+                className={`flex-1 py-1.5 rounded-xl font-semibold transition-colors ${showSidePanel === 'seo' ? 'bg-[#1a1a1a] text-white shadow-2xs' : 'text-[#55555e] hover:text-[#1a1a1a]'}`}
               >
                 SEO & SERP
               </button>
               <button
                 onClick={() => setShowSidePanel('toc')}
-                className={`flex-1 py-1.5 rounded-xl font-medium transition-colors ${showSidePanel === 'toc' ? 'bg-blue-600 text-white' : 'text-gray-400 hover:text-white'}`}
+                className={`flex-1 py-1.5 rounded-xl font-semibold transition-colors ${showSidePanel === 'toc' ? 'bg-[#1a1a1a] text-white shadow-2xs' : 'text-[#55555e] hover:text-[#1a1a1a]'}`}
               >
                 Outline ({headings.length})
               </button>
               <button
                 onClick={() => setShowSidePanel('settings')}
-                className={`flex-1 py-1.5 rounded-xl font-medium transition-colors ${showSidePanel === 'settings' ? 'bg-blue-600 text-white' : 'text-gray-400 hover:text-white'}`}
+                className={`flex-1 py-1.5 rounded-xl font-semibold transition-colors ${showSidePanel === 'settings' ? 'bg-[#1a1a1a] text-white shadow-2xs' : 'text-[#55555e] hover:text-[#1a1a1a]'}`}
               >
                 Settings
               </button>
@@ -603,23 +603,23 @@ export const BlogEditor: React.FC<BlogEditorProps> = ({ postId, onNavigate }) =>
 
             {/* Panel 1: Live SEO Preview */}
             {showSidePanel === 'seo' && (
-              <div className="bg-[#0e131f] p-5 rounded-2xl border border-white/5 space-y-4 font-sans">
-                <h3 className="text-xs font-mono text-gray-400 uppercase tracking-wider">Live Google Search Preview</h3>
-                <div className="bg-white p-3.5 rounded-xl text-left font-sans space-y-1 text-xs">
+              <div className="bg-[#f4f4f3] p-5 rounded-2xl border border-[#dcdcdc] space-y-4 font-sans shadow-2xs">
+                <h3 className="text-xs font-mono text-[#55555e] uppercase tracking-wider">Live Google Search Preview</h3>
+                <div className="bg-white p-3.5 rounded-xl text-left font-sans space-y-1 text-xs border border-[#dcdcdc]">
                   <p className="text-gray-500 text-[11px] truncate">https://praxel.space › blog › {slug || 'article-slug'}</p>
                   <p className="text-[#1a0dab] font-medium text-sm leading-tight line-clamp-1">{title || 'Your Article Title Goes Here'}</p>
                   <p className="text-[#4d5156] text-xs leading-relaxed line-clamp-2">{excerpt || 'Your article summary and meta description will appear here in Google SERP results.'}</p>
                 </div>
 
-                <h3 className="text-xs font-mono text-gray-400 uppercase tracking-wider pt-2">Social Card Preview</h3>
-                <div className="bg-[#111827] border border-white/10 rounded-xl overflow-hidden text-xs">
-                  <div className="h-28 w-full bg-slate-900">
+                <h3 className="text-xs font-mono text-[#55555e] uppercase tracking-wider pt-2">Social Card Preview</h3>
+                <div className="bg-white border border-[#dcdcdc] rounded-xl overflow-hidden text-xs">
+                  <div className="h-28 w-full bg-black/5">
                     <img src={coverImage} alt="Cover" className="w-full h-full object-cover" />
                   </div>
                   <div className="p-3 space-y-1">
-                    <p className="text-[10px] text-gray-400 font-mono uppercase">PRAXEL.SPACE</p>
-                    <p className="text-white font-bold line-clamp-1">{title || 'Untitled Post'}</p>
-                    <p className="text-gray-400 line-clamp-1 text-[11px]">{excerpt || 'Article summary description...'}</p>
+                    <p className="text-[10px] text-[#55555e] font-mono uppercase">PRAXEL.SPACE</p>
+                    <p className="text-[#1a1a1a] font-bold line-clamp-1">{title || 'Untitled Post'}</p>
+                    <p className="text-[#55555e] line-clamp-1 text-[11px]">{excerpt || 'Article summary description...'}</p>
                   </div>
                 </div>
               </div>
@@ -627,15 +627,15 @@ export const BlogEditor: React.FC<BlogEditorProps> = ({ postId, onNavigate }) =>
 
             {/* Panel 2: Table of Contents */}
             {showSidePanel === 'toc' && (
-              <div className="bg-[#0e131f] p-5 rounded-2xl border border-white/5 space-y-3">
-                <h3 className="text-xs font-mono text-gray-400 uppercase tracking-wider">Generated Table of Contents</h3>
+              <div className="bg-[#f4f4f3] p-5 rounded-2xl border border-[#dcdcdc] space-y-3 shadow-2xs">
+                <h3 className="text-xs font-mono text-[#55555e] uppercase tracking-wider">Generated Table of Contents</h3>
                 {headings.length === 0 ? (
-                  <p className="text-xs text-gray-500 font-mono py-4">Add heading blocks (H2, H3) to build an automated table of contents.</p>
+                  <p className="text-xs text-[#55555e] font-mono py-4">Add heading blocks (H2, H3) to build an automated table of contents.</p>
                 ) : (
                   <div className="space-y-1.5">
                     {headings.map((h, i) => (
-                      <div key={i} className="text-xs text-gray-300 flex items-center gap-2 py-1 border-b border-white/5">
-                        <span className="text-blue-400 font-mono text-[10px]">H{h.level || 2}</span>
+                      <div key={i} className="text-xs text-[#1a1a1a] flex items-center gap-2 py-1 border-b border-black/8">
+                        <span className="text-[#ad314d] font-mono text-[10px] font-bold">H{h.level || 2}</span>
                         <span className="truncate">{h.content as string}</span>
                       </div>
                     ))}
@@ -646,7 +646,7 @@ export const BlogEditor: React.FC<BlogEditorProps> = ({ postId, onNavigate }) =>
 
             {/* Panel 3: Publishing Settings */}
             {showSidePanel === 'settings' && (
-              <div className="bg-[#0e131f] p-5 rounded-2xl border border-white/5 space-y-4">
+              <div className="bg-[#f4f4f3] p-5 rounded-2xl border border-[#dcdcdc] space-y-4 shadow-2xs">
                 <div>
                   <label className="text-[11px] text-gray-400 block mb-1">Status</label>
                   <select

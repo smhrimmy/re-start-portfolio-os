@@ -99,28 +99,28 @@ export const CommentsModerationPage: React.FC = () => {
       {/* Comments List */}
       <div className="space-y-3">
         {filtered.map(c => (
-          <div key={c.id} className="p-5 rounded-2xl bg-[#0e131f] border border-white/5 space-y-3 hover:border-white/10 transition-colors">
+          <div key={c.id} className="p-5 rounded-2xl bg-[#f4f4f3] border border-[#dcdcdc] space-y-3 shadow-2xs hover:border-black/20 transition-colors">
             <div className="flex items-start justify-between">
               <div>
-                <p className="text-xs font-bold text-white">{c.authorName} <span className="font-normal text-gray-400 font-mono">({c.authorEmail})</span></p>
-                <p className="text-[11px] text-blue-400 font-medium mt-0.5">Article: {c.postTitle}</p>
+                <p className="text-xs font-bold text-[#1a1a1a]">{c.authorName} <span className="font-normal text-[#55555e] font-mono">({c.authorEmail})</span></p>
+                <p className="text-[11px] text-[#ad314d] font-medium mt-0.5 font-mono">Article: {c.postTitle}</p>
               </div>
 
               <span className={`text-[10px] font-mono uppercase px-2 py-0.5 rounded border ${
-                c.status === 'approved' ? 'bg-emerald-500/10 text-emerald-400 border-emerald-500/20' :
-                c.status === 'pending' ? 'bg-amber-500/10 text-amber-400 border-amber-500/20' :
-                'bg-red-500/10 text-red-400 border-red-500/20'
+                c.status === 'approved' ? 'bg-emerald-50 text-emerald-800 border-emerald-300' :
+                c.status === 'pending' ? 'bg-amber-50 text-amber-800 border-amber-300' :
+                'bg-red-50 text-red-800 border-red-300'
               }`}>
                 {c.status}
               </span>
             </div>
 
-            <p className="text-xs text-gray-300 leading-relaxed bg-white/2 p-3 rounded-xl border border-white/5">
+            <p className="text-xs text-[#222228] leading-relaxed bg-white p-3 rounded-xl border border-[#dcdcdc]">
               {c.content}
             </p>
 
             <div className="flex items-center justify-between pt-1 text-xs">
-              <span className="font-mono text-[10px] text-gray-500">
+              <span className="font-mono text-[10px] text-[#55555e]">
                 {new Date(c.createdAt).toLocaleDateString()}
               </span>
 

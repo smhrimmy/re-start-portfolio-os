@@ -311,7 +311,7 @@ export const SettingsPage: React.FC = () => {
         </div>
 
         {/* Right Settings Content Form Pane */}
-        <div className="md:col-span-8 lg:col-span-9 bg-[#0e131f] border border-white/5 rounded-2xl sm:rounded-3xl p-4 sm:p-8 space-y-6 w-full max-w-full overflow-hidden">
+        <div className="md:col-span-8 lg:col-span-9 bg-[#f4f4f3] border border-[#dcdcdc] rounded-2xl sm:rounded-3xl p-4 sm:p-8 space-y-6 w-full max-w-full overflow-hidden shadow-2xs">
           {/* SECTION 1: GENERAL */}
           {activeSection === 'general' && (
             <div className="space-y-6">
@@ -965,7 +965,7 @@ export const SettingsPage: React.FC = () => {
 
       {/* Sticky Unsaved Changes Bar */}
       {hasUnsavedChanges && (
-        <div className="hidden md:flex fixed bottom-6 left-1/2 -translate-x-1/2 z-50 bg-[#0e131f] border border-blue-500/40 text-white px-6 py-3 rounded-2xl shadow-2xl items-center gap-4 animate-in slide-in-from-bottom-4">
+        <div className="hidden md:flex fixed bottom-6 left-1/2 -translate-x-1/2 z-50 bg-[#1a1a1a] border border-black/20 text-white px-6 py-3 rounded-2xl shadow-2xl items-center gap-4 animate-in slide-in-from-bottom-4">
           <div className="flex items-center gap-2 text-xs">
             <span className="w-2 h-2 rounded-full bg-amber-400 animate-ping" />
             <span className="font-semibold">You have unsaved changes</span>

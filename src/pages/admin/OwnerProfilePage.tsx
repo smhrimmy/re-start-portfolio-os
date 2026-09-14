@@ -36,7 +36,7 @@ export const OwnerProfilePage: React.FC = () => {
 
       <form onSubmit={handleSave} className="space-y-6 text-xs">
         {/* Core Identity */}
-        <div className="bg-[#0e131f] border border-white/5 rounded-2xl p-6 space-y-4">
+        <div className="bg-[#f4f4f3] border border-[#dcdcdc] rounded-2xl p-6 space-y-4 shadow-2xs">
           <h3 className="text-xs font-mono uppercase tracking-wider text-gray-400">Core Identity</h3>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
@@ -116,7 +116,7 @@ export const OwnerProfilePage: React.FC = () => {
         </div>
 
         {/* Media Assets */}
-        <div className="bg-[#0e131f] border border-white/5 rounded-2xl p-6 space-y-4">
+        <div className="bg-[#f4f4f3] border border-[#dcdcdc] rounded-2xl p-6 space-y-4 shadow-2xs">
           <h3 className="text-xs font-mono uppercase tracking-wider text-gray-400">Media & Avatars</h3>
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
             <div>
@@ -141,7 +141,7 @@ export const OwnerProfilePage: React.FC = () => {
         </div>
 
         {/* Impact Stats */}
-        <div className="bg-[#0e131f] border border-white/5 rounded-2xl p-6 space-y-4">
+        <div className="bg-[#f4f4f3] border border-[#dcdcdc] rounded-2xl p-6 space-y-4 shadow-2xs">
           <h3 className="text-xs font-mono uppercase tracking-wider text-gray-400">Key Career Impact Metrics</h3>
           <div className="grid grid-cols-2 sm:grid-cols-4 gap-4">
             <div>
@@ -184,7 +184,7 @@ export const OwnerProfilePage: React.FC = () => {
         </div>
 
         {/* Social Links */}
-        <div className="bg-[#0e131f] border border-white/5 rounded-2xl p-6 space-y-4">
+        <div className="bg-[#f4f4f3] border border-[#dcdcdc] rounded-2xl p-6 space-y-4 shadow-2xs">
           <h3 className="text-xs font-mono uppercase tracking-wider text-gray-400">Social Syndication & Contact Channels</h3>
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
             <div>

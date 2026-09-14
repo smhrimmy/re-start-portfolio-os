@@ -77,14 +77,14 @@ export const MediaLibrary: React.FC = () => {
       </div>
 
       {/* Storage Bar & Folder Filters */}
-      <div className="flex flex-wrap items-center justify-between gap-4 bg-[#0e131f] p-4 rounded-2xl border border-white/5">
+      <div className="flex flex-wrap items-center justify-between gap-4 bg-[#f4f4f3] p-4 rounded-2xl border border-[#dcdcdc] shadow-2xs">
         <div className="flex items-center gap-2">
           {folders.map(f => (
             <button
               key={f}
               onClick={() => setActiveFolder(f)}
-              className={`px-3 py-1.5 rounded-xl text-xs font-medium flex items-center gap-1.5 transition-colors ${
-                activeFolder === f ? 'bg-blue-600 text-white' : 'text-gray-400 hover:text-white hover:bg-white/5'
+              className={`px-3 py-1.5 rounded-xl text-xs font-semibold flex items-center gap-1.5 transition-colors ${
+                activeFolder === f ? 'bg-[#1a1a1a] text-white shadow-2xs' : 'text-[#55555e] hover:text-[#1a1a1a] hover:bg-black/5'
               }`}
             >
               <Folder className="w-3.5 h-3.5" /> {f}
@@ -93,12 +93,12 @@ export const MediaLibrary: React.FC = () => {
         </div>
 
         <div className="flex items-center gap-4 text-xs font-mono">
-          <span className="text-gray-400 flex items-center gap-1.5">
-            <HardDrive className="w-3.5 h-3.5 text-blue-400" />
+          <span className="text-[#55555e] flex items-center gap-1.5">
+            <HardDrive className="w-3.5 h-3.5 text-[#ad314d]" />
             <span>{totalMB} MB / 500 MB quota</span>
           </span>
-          <div className="w-24 bg-white/10 h-1.5 rounded-full overflow-hidden">
-            <div className="bg-blue-500 h-full w-[12%]" />
+          <div className="w-24 bg-black/10 h-1.5 rounded-full overflow-hidden">
+            <div className="bg-[#1a1a1a] h-full w-[12%]" />
           </div>
         </div>
       </div>
@@ -109,21 +109,21 @@ export const MediaLibrary: React.FC = () => {
           <div
             key={asset.id}
             onClick={() => setSelectedAsset(asset)}
-            className={`rounded-xl bg-[#0e131f] border overflow-hidden cursor-pointer group transition-all ${
-              selectedAsset?.id === asset.id ? 'border-blue-500 ring-2 ring-blue-500/20' : 'border-white/5 hover:border-white/20'
+            className={`rounded-xl bg-[#f4f4f3] border overflow-hidden cursor-pointer group transition-all ${
+              selectedAsset?.id === asset.id ? 'border-2 border-[#ad314d] shadow-sm' : 'border-[#dcdcdc] hover:border-black/30'
             }`}
           >
-            <div className="h-32 w-full bg-slate-900 overflow-hidden relative">
+            <div className="h-32 w-full bg-black/5 overflow-hidden relative">
               <img src={asset.url} alt={asset.name} className="w-full h-full object-cover group-hover:scale-105 transition-transform" />
               {asset.usedIn.length > 0 && (
-                <span className="absolute bottom-1.5 left-1.5 bg-blue-600/90 text-white px-1.5 py-0.5 rounded text-[9px] font-mono">
+                <span className="absolute bottom-1.5 left-1.5 bg-[#1a1a1a] text-white px-1.5 py-0.5 rounded text-[9px] font-mono">
                   Used ({asset.usedIn.length})
                 </span>
               )}
             </div>
             <div className="p-2.5 space-y-1">
-              <p className="text-xs font-medium text-white truncate">{asset.name}</p>
-              <p className="text-[10px] font-mono text-gray-400">{asset.dimensions.width}x{asset.dimensions.height} · {(asset.sizeBytes / 1024).toFixed(0)}KB</p>
+              <p className="text-xs font-bold text-[#1a1a1a] truncate">{asset.name}</p>
+              <p className="text-[10px] font-mono text-[#55555e]">{asset.dimensions.width}x{asset.dimensions.height} · {(asset.sizeBytes / 1024).toFixed(0)}KB</p>
             </div>
           </div>
         ))}
