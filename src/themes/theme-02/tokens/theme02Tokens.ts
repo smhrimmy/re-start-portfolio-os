@@ -11,6 +11,9 @@ export const THEME_02_TOKENS = {
     accentCyanHover: '#00C8D6',
     accentAmber: '#FF9F1C',   // Indicator Amber
     accentAmberHover: '#E58800',
+    dangerToken: '#FF4D4D',   // Dedicated cyber-terminal danger red
+    dangerHover: '#D32F2F',   // Destructive hover state
+    dangerGlow: 'rgba(255, 77, 77, 0.25)',
     success: '#2EA043',
     error: '#F85149',
     warning: '#D29922',

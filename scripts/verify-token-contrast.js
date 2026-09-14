@@ -32,16 +32,30 @@ function hexToRgb(hex) {
   return [(num >> 16) & 255, (num >> 8) & 255, num & 255];
 }
 
-// Token pairs to evaluate across Admin and Public Themes
+// Comprehensive WCAG 2.2 AA Token Pair Audit Suite
 const TOKEN_PAIR_TESTS = [
-  { name: 'Admin OS Light — Body Text on Base Surface', fg: '#222222', bg: '#ececeb', target: 4.5 },
-  { name: 'Admin OS Light — Muted Text on Surface', fg: '#4b5563', bg: '#ececeb', target: 4.5 },
-  { name: 'Theme 01 Editorial — Display Text on Cream Surface', fg: '#111111', bg: '#F2F0EB', target: 4.5 },
-  { name: 'Theme 01 Editorial — Accent Text on Cream', fg: '#8B0000', bg: '#F2F0EB', target: 4.5 },
-  { name: 'Theme 02 Control Deck — Light Code on Dark Console', fg: '#C9D1D9', bg: '#0A0D10', target: 4.5 },
+  // Admin OS
+  { name: 'Admin OS Light — Primary Ink Text on Base Surface', fg: '#1a1a1a', bg: '#ececeb', target: 4.5 },
+  { name: 'Admin OS Light — Secondary Text on Base Surface', fg: '#555555', bg: '#ececeb', target: 4.5 },
+  { name: 'Admin OS Light — Muted Caption Text on Card Surface', fg: '#6b6b6b', bg: '#f4f4f3', target: 4.5 },
+  { name: 'Admin OS Light — Danger LED Text on Base Surface', fg: '#b91c1c', bg: '#ececeb', target: 4.5 },
+  
+  // Theme 01 (Editorial)
+  { name: 'Theme 01 Editorial — Display Text on Paper Base', fg: '#111111', bg: '#F9F8F6', target: 4.5 },
+  { name: 'Theme 01 Editorial — Secondary Text on Cream Surface', fg: '#555555', bg: '#F2F0EB', target: 4.5 },
+  { name: 'Theme 01 Editorial — Muted Captions on Base Surface', fg: '#646464', bg: '#F9F8F6', target: 4.5 },
+  { name: 'Theme 01 Editorial — Brand Accent Text on Cream', fg: '#8B0000', bg: '#F2F0EB', target: 4.5 },
+  { name: 'Theme 01 Editorial — Destructive Danger Action on Base', fg: '#C53030', bg: '#F9F8F6', target: 4.5 },
+
+  // Theme 02 (Control Deck)
+  { name: 'Theme 02 Control Deck — Light Code on Dark Console', fg: '#E6EDF3', bg: '#0A0D10', target: 4.5 },
+  { name: 'Theme 02 Control Deck — Technical Secondary Text on Card', fg: '#8B949E', bg: '#161B22', target: 4.5 },
   { name: 'Theme 02 Control Deck — Cyan Highlight on Dark Card', fg: '#00F0FF', bg: '#161B22', target: 4.5 },
   { name: 'Theme 02 Control Deck — Amber Warning on Dark Card', fg: '#FF9F1C', bg: '#161B22', target: 4.5 },
-  { name: 'Global Topbar Switcher — White Text on Dark Bar', fg: '#FFFFFF', bg: '#1a1a1a', target: 4.5 },
+  { name: 'Theme 02 Control Deck — Destructive Danger Action on Card', fg: '#FF4D4D', bg: '#161B22', target: 4.5 },
+
+  // Shell & Navigation
+  { name: 'Global Topbar Switcher — White Text on Dark Shell', fg: '#FFFFFF', bg: '#1a1a1a', target: 4.5 },
 ];
 
 function runContrastVerifier() {

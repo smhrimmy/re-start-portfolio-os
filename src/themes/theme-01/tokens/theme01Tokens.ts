@@ -4,15 +4,18 @@ export const THEME_01_TOKENS = {
     bgSurface: '#FFFFFF',     // Clean paper surface
     bgElevated: '#F2F0EB',    // Slightly darker paper
     textPrimary: '#111111',   // Near-black ink
-    textSecondary: '#666666', // Restrained charcoal
-    textMuted: '#999999',     // Muted gray captions
+    textSecondary: '#555555', // Restrained charcoal (WCAG AA compliant)
+    textMuted: '#646464',     // Muted captions & metadata (5.57:1 contrast - passes WCAG 2.2 AA)
     rule: '#E2E0D8',          // Thin editorial rule
     ruleDark: '#111111',      // Dark divider rule
-    accent: '#8B0000',        // Deep Crimson editorial accent
+    accent: '#8B0000',        // Deep Crimson editorial brand accent
     accentHover: '#6B0000',
     accentLight: '#FDF2F2',
+    dangerToken: '#C53030',   // Dedicated destructive/danger action token
+    dangerHover: '#9B2C2C',   // Destructive hover state
+    dangerLight: '#FFF5F5',   // Destructive background tint
     success: '#15803D',
-    error: '#B91C1C',
+    error: '#C53030',
     warning: '#C2410C',
   },
   typography: {
