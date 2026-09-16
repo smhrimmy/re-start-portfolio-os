@@ -34,17 +34,17 @@ export const ArchiveBox: React.FC<ArchiveBoxProps> = ({
           fill="none"
           xmlns="http://www.w3.org/2000/svg"
         >
-          {/* Inner Back Wall */}
+          {/* Inner Back Wall of Box */}
           <polygon
-            points="40,190 195,45 460,75 345,275"
-            fill="#1E3BB3"
+            points="50,160 250,60 450,120 250,220"
+            fill="#1A329E"
             stroke="#18203A"
-            strokeWidth="2"
+            strokeWidth="2.5"
             strokeLinejoin="round"
           />
-          {/* Inner Floor */}
+          {/* Inner Floor of Box */}
           <polygon
-            points="40,390 345,475 460,310 345,275"
+            points="50,380 250,440 450,340 250,220"
             fill="#14257C"
             stroke="#18203A"
             strokeWidth="1.5"
@@ -52,30 +52,30 @@ export const ArchiveBox: React.FC<ArchiveBoxProps> = ({
           />
         </svg>
 
-        {/* 2. Folder Deck (z-index: 1..4 - Between Back and Front Shells) */}
-        <div className="folder-deck absolute inset-0">
+        {/* 2. Folder Deck (z-index: 1..4 - Sitting inside the box cavity) */}
+        <div className="folder-deck absolute inset-0 z-1">
           {projects.map((project, idx) => {
             const numStr = String(idx + 1).padStart(2, '0');
             const folderBg = theme03Tokens.folderColors[idx % theme03Tokens.folderColors.length];
             const isTargetHovered = activeHoverSlug === project.slug;
 
-            // Geometry offsets per index
+            // Step geometry per index
             const stepIdx = idx % 4;
-            const leftPercent = 10 + stepIdx * 5;
-            const topPercent = 21 - stepIdx * 7;
+            const leftPercent = 12 + stepIdx * 5;
+            const topPercent = 18 - stepIdx * 6;
             const baseZIndex = projects.length - idx;
 
-            // Lift calculation:
-            // Targeted folder lifts -48px total; z-index boosted to 4 (strictly behind front shell z-index 5)
-            // Stage/List hover lifts all folders -14px
+            // Lift mechanics:
+            // - Active/hovered folder lifts -36px (rises above other folders while remaining inside box)
+            // - Hovering box/list gently lifts all folders -12px
             let liftPx = 0;
             let currentZIndex = baseZIndex;
 
             if (isTargetHovered) {
-              liftPx = -48;
-              currentZIndex = 4;
+              liftPx = -36;
+              currentZIndex = 4; // Max z-index below front shell (5)
             } else if (isStageHovered || activeHoverSlug !== null) {
-              liftPx = -14;
+              liftPx = -12;
             }
 
             return (
@@ -104,7 +104,7 @@ export const ArchiveBox: React.FC<ArchiveBoxProps> = ({
                   className="folder-face"
                   style={{ backgroundColor: folderBg }}
                 >
-                  <small className="font-sans-satoshi text-[0.7rem] font-bold text-[#18203A]/70 uppercase tracking-wider">
+                  <small className="font-sans-satoshi text-[0.7rem] font-bold text-[#18203A]/75 uppercase tracking-wider">
                     PROJECT / {numStr}
                   </small>
                   <strong className="folder-logo line-clamp-2">
@@ -119,7 +119,7 @@ export const ArchiveBox: React.FC<ArchiveBoxProps> = ({
           })}
         </div>
 
-        {/* 3. Front Shell SVG (z-index: 5 ALWAYS - In front of folders) */}
+        {/* 3. Front Shell SVG (z-index: 5 - ALWAYS ON TOP OF FOLDERS) */}
         <svg
           className="box-front absolute inset-0 w-full h-full pointer-events-none z-5"
           viewBox="0 0 500 500"
@@ -128,17 +128,17 @@ export const ArchiveBox: React.FC<ArchiveBoxProps> = ({
         >
           {/* Front Outer Wall */}
           <polygon
-            points="40,190 345,275 345,475 40,390"
+            points="50,160 250,220 250,440 50,380"
             fill="#3054DE"
             stroke="#18203A"
             strokeWidth="3.5"
             strokeLinejoin="round"
           />
 
-          {/* Right Outer Wall */}
+          {/* Right Outer Side Wall */}
           <polygon
-            points="345,275 460,75 460,310 345,475"
-            fill="#2342B8"
+            points="250,220 450,120 450,340 250,440"
+            fill="#2240B6"
             stroke="#18203A"
             strokeWidth="3.5"
             strokeLinejoin="round"
@@ -146,39 +146,42 @@ export const ArchiveBox: React.FC<ArchiveBoxProps> = ({
 
           {/* Handle Cutout on Front Wall */}
           <rect
-            x="147"
-            y="305"
-            width="90"
-            height="26"
-            rx="13"
-            fill="#14257C"
+            x="110"
+            y="245"
+            width="80"
+            height="24"
+            rx="12"
+            fill="#122063"
             stroke="#18203A"
             strokeWidth="2.5"
+            transform="rotate(16, 150, 257)"
           />
 
           {/* White Label Sticker "MY WORKS" */}
-          <rect
-            x="102"
-            y="350"
-            width="180"
-            height="48"
-            rx="6"
-            fill="#FAF8F5"
-            stroke="#18203A"
-            strokeWidth="2.5"
-          />
-          <text
-            x="192"
-            y="381"
-            fill="#18203A"
-            fontFamily="'Satoshi', sans-serif"
-            fontSize="19"
-            fontWeight="800"
-            letterSpacing="1.5"
-            textAnchor="middle"
-          >
-            MY WORKS
-          </text>
+          <g transform="rotate(16, 150, 320)">
+            <rect
+              x="70"
+              y="298"
+              width="160"
+              height="44"
+              rx="6"
+              fill="#FAF8F5"
+              stroke="#18203A"
+              strokeWidth="2.5"
+            />
+            <text
+              x="150"
+              y="327"
+              fill="#18203A"
+              fontFamily="'Satoshi', sans-serif"
+              fontSize="17"
+              fontWeight="800"
+              letterSpacing="1.5"
+              textAnchor="middle"
+            >
+              MY WORKS
+            </text>
+          </g>
         </svg>
       </div>
     </div>
