@@ -39,7 +39,25 @@
   scroll-margin-top: 90px;
 }
 
-/* Archive Box Container & Stage */
+/* --- RESTRAINT PRINCIPLE: SHARED QUIET ENTRANCE --- */
+.quiet-entrance {
+  opacity: 0;
+  transform: translateY(16px);
+  transition: opacity 0.5s cubic-bezier(0.16, 1, 0.3, 1), transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: opacity, transform;
+}
+
+.quiet-entrance.is-visible {
+  opacity: 1;
+  transform: translateY(0px);
+}
+
+.stagger-1 { transition-delay: 0.05s; }
+.stagger-2 { transition-delay: 0.10s; }
+.stagger-3 { transition-delay: 0.15s; }
+.stagger-4 { transition-delay: 0.20s; }
+
+/* Archive Box Container & Stage (THE BOLD MOMENT) */
 .archive-container {
   width: 100%;
   max-width: 570px;
@@ -181,6 +199,11 @@
   }
   .project-folder {
     transition: none;
+  }
+  .quiet-entrance {
+    transition: none !important;
+    opacity: 1 !important;
+    transform: none !important;
   }
 }
 
