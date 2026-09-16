@@ -57,7 +57,7 @@
 .stagger-3 { transition-delay: 0.15s; }
 .stagger-4 { transition-delay: 0.20s; }
 
-/* Archive Box Container & Stage (THE BOLD MOMENT) */
+/* Archive Box Container & Stage (THE BOLD MOMENT - PURE VECTOR SVG BOX) */
 .archive-container {
   width: 100%;
   max-width: 570px;
@@ -72,41 +72,6 @@
   width: 100%;
   isolation: isolate;
   container-type: inline-size;
-}
-
-.archive-stage img.box-back,
-.archive-stage img.box-front {
-  position: absolute;
-  inset: 0;
-  width: 100%;
-  height: 100%;
-  object-fit: contain;
-  pointer-events: none;
-  filter: none;
-}
-
-.archive-stage img.box-back {
-  z-index: 0;
-  clip-path: polygon(
-    4.3% 43%,
-    39.2% 8.2%,
-    93.4% 13.8%,
-    93.4% 61.8%,
-    71.6% 96.2%,
-    4.3% 78%
-  );
-}
-
-.archive-stage img.box-front {
-  z-index: 5;
-  clip-path: polygon(
-    4.3% 43%,
-    71.5% 57.8%,
-    93.4% 13.8%,
-    93.4% 61.8%,
-    71.6% 96.2%,
-    4.3% 78%
-  );
 }
 
 .folder-deck {
@@ -193,6 +158,45 @@
   100% { transform: rotate(var(--rest-rot, 0deg)); }
 }
 
+/* --- NATIVE DIALOG FADE + SCALE ANIMATION VIA @starting-style --- */
+dialog.case-study-dialog {
+  opacity: 0;
+  transform: scale(0.95) translateY(10px);
+  transition: opacity 0.25s cubic-bezier(0.16, 1, 0.3, 1),
+              transform 0.25s cubic-bezier(0.16, 1, 0.3, 1),
+              overlay 0.25s allow-discrete,
+              display 0.25s allow-discrete;
+}
+
+dialog.case-study-dialog[open] {
+  opacity: 1;
+  transform: scale(1) translateY(0px);
+}
+
+@starting-style {
+  dialog.case-study-dialog[open] {
+    opacity: 0;
+    transform: scale(0.95) translateY(10px);
+  }
+}
+
+dialog.case-study-dialog::backdrop {
+  background-color: rgba(24, 32, 58, 0);
+  transition: background-color 0.25s ease,
+              overlay 0.25s allow-discrete,
+              display 0.25s allow-discrete;
+}
+
+dialog.case-study-dialog[open]::backdrop {
+  background-color: rgba(24, 32, 58, 0.42);
+}
+
+@starting-style {
+  dialog.case-study-dialog[open]::backdrop {
+    background-color: rgba(24, 32, 58, 0);
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
   .process-sticker:hover {
     animation: none;
@@ -204,6 +208,9 @@
     transition: none !important;
     opacity: 1 !important;
     transform: none !important;
+  }
+  dialog.case-study-dialog {
+    transition: none !important;
   }
 }
 

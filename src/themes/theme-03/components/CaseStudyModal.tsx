@@ -45,12 +45,13 @@ export const CaseStudyModal: React.FC<CaseStudyModalProps> = ({
   return (
     <dialog
       ref={dialogRef}
+      id="case-overlay"
       onClick={handleBackdropClick}
       onCancel={(e) => {
         e.preventDefault();
         onClose();
       }}
-      className="m-auto backdrop:bg-[#18203A]/42 max-w-[780px] w-[calc(100%-32px)] max-h-[85svh] p-6 sm:p-9 bg-white text-[#18203A] border border-[#D9DCE4] rounded-[20px] shadow-xl overflow-y-auto outline-none"
+      className="case-study-dialog m-auto backdrop:bg-[#18203A]/42 max-w-[780px] w-[calc(100%-32px)] max-h-[85svh] p-6 sm:p-9 bg-white text-[#18203A] border border-[#D9DCE4] rounded-[20px] shadow-xl overflow-y-auto outline-none"
     >
       <div className="relative flex flex-col gap-6">
         {/* Header Bar */}
@@ -105,7 +106,7 @@ export const CaseStudyModal: React.FC<CaseStudyModalProps> = ({
         {/* Overview */}
         <div className="space-y-2">
           <h3 className="font-serif-instrument text-[1.5rem] font-normal text-[#18203A]">
-            Overview
+            What it is
           </h3>
           <p className="font-sans-satoshi text-[0.92rem] text-[#536083] leading-relaxed">
             {project.summary || "Case study detailing product goals, design architecture, and engineering implementation."}
