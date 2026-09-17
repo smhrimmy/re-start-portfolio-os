@@ -20,8 +20,8 @@ export const ControlDeckButton: React.FC<ControlDeckButtonProps> = ({
     'relative inline-flex items-center justify-center font-mono font-medium uppercase tracking-wider transition-all duration-150 rounded-sm border focus:outline-none focus:ring-1 focus:ring-[#00F0FF] disabled:opacity-50 disabled:cursor-not-allowed';
 
   const sizeStyles = {
-    sm: 'px-3 py-1 text-xs gap-1.5 min-h-[32px]',
-    md: 'px-4 py-2 text-sm gap-2 min-h-[40px]',
+    sm: 'px-3 py-1.5 text-xs gap-1.5 min-h-[44px]',
+    md: 'px-4 py-2 text-sm gap-2 min-h-[44px]',
     lg: 'px-6 py-3 text-base gap-2.5 min-h-[48px]',
   };
 
