@@ -2,6 +2,7 @@ import { ThemeConfig } from './types';
 import { theme01Config } from './theme-01/config';
 import { theme02Config } from './theme-02/config';
 import { theme03Config } from './theme-03/config';
+import { theme04Config } from './theme-04/config';
 import { themeTemplateConfig } from './theme-template';
 
 const themeRegistry = new Map<string, ThemeConfig>();
@@ -29,5 +30,7 @@ export function getAllThemes(): ThemeConfig[] {
 registerTheme(theme01Config);
 registerTheme(theme02Config);
 registerTheme(theme03Config);
+registerTheme(theme04Config);
 registerTheme(themeTemplateConfig);
+
 
