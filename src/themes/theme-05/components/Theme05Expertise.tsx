@@ -1,178 +1,171 @@
 import React, { useState } from 'react';
-import { ArrowUpRight, Code2, Cpu, Globe, Flame, Layers, Sparkles } from 'lucide-react';
 
 export const Theme05Expertise: React.FC = () => {
-  const [hoveredBadge, setHoveredBadge] = useState<string | null>(null);
-  const [hoveredRow, setHoveredRow] = useState<number | null>(null);
+  const [hoveredRow, setHoveredRow] = useState<{ grad: string; x: number; y: number } | null>(null);
 
-  const techBadges = [
-    { name: 'REACT.JS', icon: Code2, color: '#61DAFB' },
-    { name: 'TYPESCRIPT', icon: Cpu, color: '#3178C6' },
-    { name: 'JAVASCRIPT', icon: Flame, color: '#F7DF1E' },
-    { name: 'GSAP MOTION', icon: Sparkles, color: '#88CE02' },
-    { name: 'DNS & CLOUD', icon: Globe, color: '#C9A876' },
-    { name: 'WORDPRESS', icon: Layers, color: '#21759B' },
-  ];
-
-  const accordionItems = [
+  const rows = [
     {
-      num: '01',
-      category: 'ENGINEERING',
+      numIcon: '</>',
+      meta: '01 / Development',
       title: 'Creative Development',
-      desc: 'High-performance web applications built with React, TypeScript, and scalable REST APIs with zero slop.',
-      tags: ['React.js', 'TypeScript', 'Tailwind CSS', 'Vite'],
-      previewColor: 'from-blue-600/20 to-cyan-500/20',
+      desc: 'Building fast, responsive and scalable interfaces with modern frontend technologies.',
+      tags: ['HTML', 'CSS', 'JavaScript'],
+      grad: 'linear-gradient(135deg, #8b5cf6, #ec4899)',
     },
     {
-      num: '02',
-      category: 'ANIMATION',
+      numIcon: '✎',
+      meta: '02 / Motion',
       title: 'Motion & Interaction',
-      desc: 'Fluid GSAP scroll-driven storytelling, SVG liquid filters, and interactive micro-animations that engage users.',
-      tags: ['GSAP', 'ScrollTrigger', 'SVG Filters', 'Framer Motion'],
-      previewColor: 'from-[#C9A876]/20 to-amber-500/20',
+      desc: 'Turning static interfaces into expressive experiences through meaningful motion and micro-interactions.',
+      tags: ['GSAP', 'ScrollTrigger', 'Lenis'],
+      grad: 'linear-gradient(135deg, #f59e0b, #ef4444)',
     },
     {
-      num: '03',
-      category: 'INTERFACE',
-      title: 'UI/UX Design Systems',
-      desc: 'Clean, accessible, WCAG 2.2 AA compliant layout ergonomics with disciplined typography and 8pt grids.',
-      tags: ['Figma', 'Design Systems', 'WCAG AA', 'Ergonomics'],
-      previewColor: 'from-purple-600/20 to-pink-500/20',
+      numIcon: '▦',
+      meta: '03 / Design',
+      title: 'UI / UX Design',
+      desc: 'Creating clean visual systems with strong hierarchy, usability and a distinctive personality.',
+      tags: ['UI Design', 'UX', 'Prototyping'],
+      grad: 'linear-gradient(135deg, #22d3ee, #3b82f6)',
     },
     {
-      num: '04',
-      category: 'SYSTEMS',
-      title: 'Modern Web Apps & Cloud',
-      desc: 'Full-stack application architecture, production DNS cutovers, SSL certificate validation, and WordPress support.',
-      tags: ['Node.js', 'DNS Management', 'WordPress', 'Cloud Hosting'],
-      previewColor: 'from-emerald-600/20 to-teal-500/20',
+      numIcon: '⬢',
+      meta: '04 / Engineering',
+      title: 'Modern Web Apps',
+      desc: 'Developing interactive applications with component-based architecture and dynamic data.',
+      tags: ['React', 'TypeScript', 'Vite'],
+      grad: 'linear-gradient(135deg, #10b981, #06b6d4)',
     },
   ];
-
-  const marqueeText = 'MOTION DESIGN + UI/UX + INTERACTIVE WEB + CREATIVE DEV + DNS & HOSTING + REACT & TYPESCRIPT + ';
 
   return (
-    <section id="expertise" className="bg-[#0B0B0C] text-white py-24 border-t border-white/10 relative">
-      <div className="max-w-7xl mx-auto px-6 sm:px-12 space-y-16">
-        {/* Main 2-Column Layout with Sticky Left Column */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
-          {/* Left Column: Sticky Stacked Heading & Tech Badges */}
-          <div className="lg:col-span-5 lg:sticky lg:top-28 space-y-8">
-            <div className="space-y-1">
-              <span className="font-display-archivo text-5xl sm:text-7xl text-[#999999] block leading-none">
-                MY
-              </span>
-              <span className="font-display-archivo text-5xl sm:text-7xl text-white block leading-none">
-                EXPERTISE
-              </span>
-            </div>
-
-            <p className="font-sans text-sm text-[#999999] leading-relaxed max-w-sm">
-              Engineering seamless web experiences across <strong className="text-white">design, code and motion</strong>. Focused on clarity, speed, and technical precision.
+    <section id="expertise" className="bg-[#0c0c0c] text-white pt-[150px] pb-0 relative">
+      <div className="max-w-[1240px] mx-auto px-[6vw]">
+        <div className="grid grid-cols-1 lg:grid-cols-[0.85fr_1.15fr] gap-[60px]">
+          {/* Left Block */}
+          <div className="reveal in">
+            <h2 className="font-display-anton text-[clamp(30px,5vw,46px)] leading-[1.05] uppercase">
+              <span className="text-[#8c8c8c] block">My</span>
+              Expertise
+            </h2>
+            <p className="mt-[22px] text-[14.5px] leading-[1.7] text-[#8c8c8c] max-w-[340px]">
+              I design and build digital experiences where <b className="text-white font-semibold">design, code and motion</b> work as one.
+            </p>
+            <p className="mt-[14px] text-[14.5px] leading-[1.7] text-[#8c8c8c] max-w-[340px]">
+              From expressive interfaces to smooth interactions, I combine frontend engineering with visual design to build digital experiences that feel intentional.
             </p>
 
-            {/* Row of Tech Icon Badges with Parallax & Hover Chip */}
-            <div className="space-y-3">
-              <span className="font-mono-jetbrains text-[10px] text-[#C9A876] tracking-[0.2em] font-bold block uppercase">
-                STACK BADGES
-              </span>
-
-              <div className="flex flex-wrap items-center gap-3 relative">
-                {techBadges.map((badge, bIdx) => {
-                  const IconComp = badge.icon;
-                  return (
-                    <div
-                      key={bIdx}
-                      onMouseEnter={() => setHoveredBadge(badge.name)}
-                      onMouseLeave={() => setHoveredBadge(null)}
-                      className="p-3 bg-[#121214] border border-[#C9A876]/30 rounded-xl hover:border-[#C9A876] hover:bg-[#C9A876]/10 transition-all cursor-pointer shadow-md group relative min-h-[44px] min-w-[44px] flex items-center justify-center"
-                    >
-                      <IconComp className="w-5 h-5 text-[#C9A876] group-hover:scale-110 transition-transform" />
-                    </div>
-                  );
-                })}
+            {/* Icon Chips */}
+            <div className="flex gap-[14px] mt-[44px]">
+              <div className="icon-chip relative w-[46px] h-[46px] rounded-full bg-[#141414] border border-white/10 flex items-center justify-center text-[19px] animate-[bob_4s_ease-in-out_infinite] group">
+                🔥
+                <span className="icon-tag absolute bottom-[56px] left-1/2 transform -translate-x-1/2 translate-y-[6px] bg-[#c9a876] text-[#0c0c0c] text-[10px] font-bold px-[9px] py-[4px] rounded-[4px] whitespace-nowrap opacity-0 group-hover:opacity-100 group-hover:translate-y-0 transition-all pointer-events-none">
+                  JavaScript
+                </span>
               </div>
-
-              {/* Tag Chip Pop Overlay */}
-              {hoveredBadge && (
-                <div className="inline-block px-3 py-1 bg-[#C9A876] text-[#0B0B0C] font-mono-jetbrains text-xs font-bold rounded-md animate-in fade-in duration-200">
-                  {hoveredBadge}
-                </div>
-              )}
+              <div className="icon-chip relative w-[46px] h-[46px] rounded-full bg-[#141414] border border-white/10 flex items-center justify-center text-[19px] animate-[bob_4s_ease-in-out_0.4s_infinite] group">
+                🎨
+                <span className="icon-tag absolute bottom-[56px] left-1/2 transform -translate-x-1/2 translate-y-[6px] bg-[#c9a876] text-[#0c0c0c] text-[10px] font-bold px-[9px] py-[4px] rounded-[4px] whitespace-nowrap opacity-0 group-hover:opacity-100 group-hover:translate-y-0 transition-all pointer-events-none">
+                  Design
+                </span>
+              </div>
+              <div className="icon-chip relative w-[46px] h-[46px] rounded-full bg-[#141414] border border-white/10 flex items-center justify-center text-[19px] animate-[bob_4s_ease-in-out_0.8s_infinite] group">
+                ⚛️
+                <span className="icon-tag absolute bottom-[56px] left-1/2 transform -translate-x-1/2 translate-y-[6px] bg-[#c9a876] text-[#0c0c0c] text-[10px] font-bold px-[9px] py-[4px] rounded-[4px] whitespace-nowrap opacity-0 group-hover:opacity-100 group-hover:translate-y-0 transition-all pointer-events-none">
+                  React
+                </span>
+              </div>
+              <div className="icon-chip relative w-[46px] h-[46px] rounded-full bg-[#141414] border border-white/10 flex items-center justify-center text-[19px] animate-[bob_4s_ease-in-out_1.2s_infinite] group">
+                🧩
+                <span className="icon-tag absolute bottom-[56px] left-1/2 transform -translate-x-1/2 translate-y-[6px] bg-[#c9a876] text-[#0c0c0c] text-[10px] font-bold px-[9px] py-[4px] rounded-[4px] whitespace-nowrap opacity-0 group-hover:opacity-100 group-hover:translate-y-0 transition-all pointer-events-none">
+                  HTML5
+                </span>
+              </div>
             </div>
           </div>
 
-          {/* Right Column: Numbered Accordion List (01-04) */}
-          <div className="lg:col-span-7 space-y-4">
-            {accordionItems.map((item, idx) => (
-              <div
-                key={item.num}
-                onMouseEnter={() => setHoveredRow(idx)}
-                onMouseLeave={() => setHoveredRow(null)}
-                className="group relative p-6 sm:p-8 bg-[#121214] border-t border-[#C9A876]/20 hover:border-[#C9A876] transition-all rounded-xl cursor-pointer"
-              >
-                <div className="flex items-start justify-between gap-4">
-                  <div className="space-y-3 flex-1">
-                    {/* Index & Category */}
-                    <div className="flex items-center gap-3 font-mono-jetbrains text-xs">
-                      <span className="text-[#C9A876] font-bold">{item.num}</span>
-                      <span className="text-neutral-500">/</span>
-                      <span className="text-[#999999] tracking-wider">{item.category}</span>
+          {/* Right Accordion List */}
+          <div>
+            <div className="border-t border-white/10">
+              {rows.map((row, idx) => (
+                <div
+                  key={idx}
+                  className="exp-row relative border-b border-white/10 py-[26px] flex items-start gap-[18px] cursor-pointer group"
+                  onMouseEnter={(e) => {
+                    setHoveredRow({ grad: row.grad, x: e.clientX + 24, y: e.clientY - 60 });
+                  }}
+                  onMouseMove={(e) => {
+                    setHoveredRow({ grad: row.grad, x: e.clientX + 24, y: e.clientY - 60 });
+                  }}
+                  onMouseLeave={() => setHoveredRow(null)}
+                >
+                  <div className="w-[40px] h-[40px] flex-none rounded-[8px] bg-[#141414] border border-white/10 flex items-center justify-center text-[17px]">
+                    {row.numIcon}
+                  </div>
+
+                  <div className="flex-1">
+                    <div className="text-[10px] tracking-[0.1em] uppercase text-[#8c8c8c] mb-[6px]">
+                      {row.meta}
                     </div>
-
-                    {/* Title */}
-                    <h3 className="font-display-archivo text-2xl sm:text-3xl text-white group-hover:text-[#C9A876] transition-colors">
-                      {item.title}
+                    <h3 className="text-[22px] font-semibold mb-[6px] group-hover:text-[#c9a876] transition-colors">
+                      {row.title}
                     </h3>
-
-                    {/* Description */}
-                    <p className="font-sans text-sm text-[#999999] leading-relaxed max-w-xl">
-                      {item.desc}
+                    <p className="text-[13.5px] text-[#8c8c8c] max-w-[480px] leading-[1.6]">
+                      {row.desc}
                     </p>
-
-                    {/* Tech Used Tag Labels */}
-                    <div className="flex flex-wrap gap-2 pt-2">
-                      {item.tags.map((t, tIdx) => (
+                    <div className="mt-[10px] flex gap-[8px]">
+                      {row.tags.map((tag, tIdx) => (
                         <span
                           key={tIdx}
-                          className="px-2.5 py-1 bg-[#0B0B0C] border border-white/10 text-neutral-300 rounded font-mono-jetbrains text-[11px]"
+                          className="text-[9.5px] tracking-[0.08em] uppercase text-[#8c8c8c] border border-white/10 px-[8px] py-[3px] rounded-[20px]"
                         >
-                          #{t}
+                          {tag}
                         </span>
                       ))}
                     </div>
                   </div>
 
-                  {/* External Link Arrow Icon */}
-                  <div className="w-10 h-10 rounded-full bg-white/5 group-hover:bg-[#C9A876] group-hover:text-[#0B0B0C] flex items-center justify-center transition-all shrink-0">
-                    <ArrowUpRight className="w-5 h-5 transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
+                  <div className="text-[16px] text-[#8c8c8c] group-hover:rotate-[45deg] group-hover:text-[#c9a876] transition-all">
+                    ↗
                   </div>
                 </div>
+              ))}
+            </div>
+          </div>
+        </div>
 
-                {/* Floating Preview Card Gradient Panel on Hover */}
-                {hoveredRow === idx && (
-                  <div className={`mt-4 p-4 rounded-lg bg-gradient-to-r ${item.previewColor} border border-[#C9A876]/40 font-mono-jetbrains text-xs text-[#C9A876] flex items-center justify-between animate-in fade-in duration-300`}>
-                    <span className="font-bold flex items-center gap-2">
-                      <Sparkles className="w-4 h-4" /> LIVE SYSTEM ARCHITECTURE CAPABILITY
-                    </span>
-                    <span className="text-white text-[11px]">INSPECT DETAILS →</span>
-                  </div>
-                )}
-              </div>
-            ))}
+        {/* Marquee Strip */}
+        <div className="marquee mt-[40px] overflow-hidden border-y border-white/10 py-[16px]">
+          <div className="marquee-track flex w-max animate-[marquee_22s_linear_infinite]">
+            <span className="font-display-anton text-[15px] text-[#8c8c8c] px-[22px] whitespace-nowrap">
+              MOTION DESIGN + UI / UX + INTERACTIVE WEB + CREATIVE DEVELOPMENT +
+            </span>
+            <span className="font-display-anton text-[15px] text-[#8c8c8c] px-[22px] whitespace-nowrap">
+              MOTION DESIGN + UI / UX + INTERACTIVE WEB + CREATIVE DEVELOPMENT +
+            </span>
           </div>
         </div>
       </div>
 
-      {/* Bottom Infinite Horizontal Marquee Strip */}
-      <div className="mt-20 py-4 bg-[#121214] border-y border-[#C9A876]/30 overflow-hidden select-none">
-        <div className="marquee-track font-display-archivo text-xl sm:text-2xl text-[#C9A876] tracking-wider whitespace-nowrap">
-          <span>{marqueeText}</span>
-          <span>{marqueeText}</span>
-          <span>{marqueeText}</span>
-          <span>{marqueeText}</span>
+      {/* Floating Preview Card on Hover */}
+      {hoveredRow && (
+        <div
+          className="fixed w-[150px] h-[110px] rounded-[12px] pointer-events-none z-[50] flex items-center justify-center gap-[8px] flex-wrap p-[14px] transition-opacity duration-200"
+          style={{
+            background: hoveredRow.grad,
+            left: `${hoveredRow.x}px`,
+            top: `${hoveredRow.y}px`,
+          }}
+        >
+          <div className="bg-white/90 rounded-[20px] px-[10px] py-[6px] text-[11px] text-[#333] flex items-center gap-[5px]">
+            ♥ Like
+          </div>
+          <div className="bg-white/90 rounded-[20px] px-[10px] py-[6px] text-[11px] text-[#333] flex items-center gap-[5px]">
+            👍 Rate
+          </div>
         </div>
-      </div>
+      )}
     </section>
   );
 };
+

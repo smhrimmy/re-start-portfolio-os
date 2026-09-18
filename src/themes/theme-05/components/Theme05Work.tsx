@@ -1,6 +1,5 @@
 import React from 'react';
 import { Project } from '@/types/portfolio';
-import { ArrowUpRight, ExternalLink, Sparkles } from 'lucide-react';
 
 interface Theme05WorkProps {
   projects: Project[];
@@ -9,114 +8,97 @@ interface Theme05WorkProps {
 
 export const Theme05Work: React.FC<Theme05WorkProps> = ({ projects, onOpenDetail }) => {
   return (
-    <section id="work" className="bg-[#0B0B0C] text-white py-24 relative overflow-hidden border-t border-white/10">
-      {/* Large Faded Background Headline Text Behind Cards */}
-      <div className="absolute top-1/4 left-1/2 -translate-x-1/2 pointer-events-none select-none text-center opacity-5 w-full">
-        <span className="font-display-archivo text-6xl sm:text-9xl lg:text-[14rem] text-white tracking-tight uppercase block leading-none">
-          FEEL ALIVE.
-        </span>
+    <section id="work" className="bg-[#0c0c0c] text-white pt-[110px] pb-[130px] relative overflow-hidden">
+      {/* Top Marquee */}
+      <div className="marquee overflow-hidden border-y border-white/10 py-[16px] mb-[60px]">
+        <div className="marquee-track flex w-max animate-[marquee_22s_linear_infinite]">
+          <span className="font-display-anton text-[15px] text-[#8c8c8c] px-[22px] whitespace-nowrap">
+            INTERACTIVE WEB + CREATIVE DEVELOPMENT + MOTION DESIGN + UI / UX +
+          </span>
+          <span className="font-display-anton text-[15px] text-[#8c8c8c] px-[22px] whitespace-nowrap">
+            INTERACTIVE WEB + CREATIVE DEVELOPMENT + MOTION DESIGN + UI / UX +
+          </span>
+        </div>
       </div>
 
-      <div className="max-w-7xl mx-auto px-6 sm:px-12 space-y-16 relative z-10">
-        {/* Section Header */}
-        <div className="space-y-2">
-          <span className="font-script-dancing text-4xl sm:text-5xl text-[#C9A876] block">
+      <div className="max-w-[1240px] mx-auto px-[6vw]">
+        {/* Work Head */}
+        <div className="text-center my-[50px] reveal in">
+          <h2 className="font-script-caveat text-[clamp(38px,6vw,64px)] text-[#c9a876]">
             My Work
-          </span>
-          <h2 className="font-display-archivo text-4xl sm:text-6xl text-white uppercase tracking-tight">
-            SELECTED PROJECTS & PRODUCTION SYSTEMS
           </h2>
         </div>
 
-        {/* Stacked Full-Width Project Cards */}
-        <div className="space-y-12">
-          {projects.map((proj, idx) => (
-            <div
-              key={proj.id || idx}
-              className="group relative rounded-2xl overflow-hidden bg-[#121214] border border-[#C9A876]/30 hover:border-[#C9A876] transition-all shadow-2xl"
-            >
-              {/* Darkened Screenshot Background Image */}
-              <div className="relative h-80 sm:h-[450px] w-full overflow-hidden">
-                <img
-                  src={proj.coverImage}
-                  alt={proj.title}
-                  className="w-full h-full object-cover filter brightness-75 group-hover:brightness-90 group-hover:scale-105 transition-all duration-700"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-[#0B0B0C] via-[#0B0B0C]/40 to-transparent" />
+        {/* Work List */}
+        <div className="flex flex-col gap-[26px]">
+          {projects.map((proj, idx) => {
+            const cardBgGradients = [
+              'linear-gradient(135deg,#2b2b2b,#0b0b0b 60%),radial-gradient(circle at 80% 20%,rgba(201,168,118,.25),transparent 50%)',
+              'linear-gradient(135deg,#242424,#050505 70%),radial-gradient(circle at 20% 80%,rgba(139,92,246,.25),transparent 55%)',
+              'linear-gradient(135deg,#262626,#070707 65%),radial-gradient(circle at 70% 75%,rgba(236,72,153,.2),transparent 55%)',
+            ];
+            const bgGrad = cardBgGradients[idx % cardBgGradients.length];
 
-                {/* Eyebrow Label & Index Badge Top-Left */}
-                <div className="absolute top-6 left-6 z-20 flex items-center gap-3">
-                  <span className="px-3.5 py-1.5 bg-[#0B0B0C]/80 backdrop-blur-md border border-[#C9A876]/60 text-[#C9A876] font-mono-jetbrains text-xs font-bold rounded-full uppercase">
-                    [{proj.role || 'FULL STACK'}] · 0{idx + 1}
-                  </span>
-                </div>
+            return (
+              <div
+                key={proj.id || idx}
+                onClick={() => onOpenDetail(proj)}
+                style={{ background: bgGrad }}
+                className="project-card relative min-h-[420px] rounded-[14px] overflow-hidden flex items-end p-[40px] border border-white/10 cursor-pointer group transition-transform duration-300 hover:scale-[1.01]"
+              >
+                <div className="absolute inset-0 bg-black/40 z-0" />
 
-                {/* Bottom-Right Rotating Circular Badge ("VIEW LIVE DEMO •") */}
-                <div className="absolute bottom-6 right-6 z-20">
-                  <a
-                    href={proj.liveUrl || proj.githubUrl || '#'}
-                    target="_blank"
-                    rel="noreferrer"
-                    className="relative w-20 h-20 sm:w-24 sm:h-24 rounded-full bg-[#111111] text-[#C9A876] hover:bg-[#C9A876] hover:text-[#111111] transition-colors flex items-center justify-center shadow-xl group/badge min-h-[44px] min-w-[44px]"
-                  >
-                    {/* Curved Rotating Text */}
-                    <svg viewBox="0 0 100 100" className="w-full h-full animate-spin-badge absolute inset-0">
-                      <path
-                        id={`textPathWorkBadge-${idx}`}
-                        d="M 50,50 m -37,0 a 37,37 0 1,1 74,0 a 37,37 0 1,1 -74,0"
-                        fill="none"
-                      />
-                      <text fill="currentColor" fontSize="10" fontWeight="bold" letterSpacing="1.5">
-                        <textPath href={`#textPathWorkBadge-${idx}`} startOffset="0%">
-                          VIEW LIVE DEMO • VIEW LIVE DEMO •
-                        </textPath>
-                      </text>
-                    </svg>
-
-                    {/* Arrow Icon */}
-                    <ArrowUpRight className="w-5 h-5 sm:w-6 sm:h-6 transform group-hover/badge:translate-x-0.5 group-hover/badge:-translate-y-0.5 transition-transform" />
-                  </a>
-                </div>
-              </div>
-
-              {/* Card Bottom Meta & Actions */}
-              <div className="p-6 sm:p-8 space-y-4 bg-[#121214]">
-                <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
-                  <h3
-                    onClick={() => onOpenDetail(proj)}
-                    className="font-display-archivo text-2xl sm:text-4xl text-white group-hover:text-[#C9A876] transition-colors cursor-pointer"
-                  >
+                <div className="relative z-[2] max-w-[560px]">
+                  <div className="text-[10.5px] tracking-[0.12em] uppercase text-[#c9a876] mb-[12px]">
+                    {proj.role || 'Portfolio System'} · 0{idx + 1}
+                  </div>
+                  <h3 className="text-[clamp(28px,4vw,44px)] font-bold mb-[10px] group-hover:text-[#c9a876] transition-colors">
                     {proj.title}
                   </h3>
-
-                  <button
-                    onClick={() => onOpenDetail(proj)}
-                    className="px-4 py-2 bg-white/5 hover:bg-[#C9A876]/20 border border-white/10 hover:border-[#C9A876] text-white rounded-xl font-mono-jetbrains text-xs flex items-center gap-2 transition-colors self-start sm:self-center"
-                  >
-                    <Sparkles className="w-3.5 h-3.5 text-[#C9A876]" /> Case Study
-                  </button>
+                  <p className="text-[13.5px] text-[#cfcfcf] leading-[1.6] mb-[16px] max-w-[440px]">
+                    {proj.summary}
+                  </p>
+                  <div className="flex gap-[8px] flex-wrap">
+                    {proj.technologies.map((tech, tIdx) => (
+                      <span
+                        key={tIdx}
+                        className="text-[9.5px] tracking-[0.08em] uppercase bg-white/[0.08] px-[10px] py-[5px] rounded-[20px]"
+                      >
+                        {tech}
+                      </span>
+                    ))}
+                  </div>
                 </div>
 
-                <p className="font-sans text-sm text-[#999999] leading-relaxed max-w-3xl">
-                  {proj.summary}
-                </p>
-
-                {/* Tech Tag Pills */}
-                <div className="flex flex-wrap gap-2 pt-2">
-                  {proj.technologies.map((tech, tIdx) => (
-                    <span
-                      key={tIdx}
-                      className="px-3 py-1 bg-[#0B0B0C] border border-[#C9A876]/20 text-[#C9A876] rounded font-mono-jetbrains text-[11px]"
-                    >
-                      #{tech}
-                    </span>
-                  ))}
-                </div>
+                {/* Orbit Badge */}
+                <a
+                  href={proj.liveUrl || proj.githubUrl || '#'}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  onClick={(e) => e.stopPropagation()}
+                  className="orbit-badge absolute right-[26px] bottom-[26px] z-[3] w-[104px] h-[104px] flex items-center justify-center group/badge"
+                >
+                  <svg className="ring absolute inset-0 w-full h-full animate-spin-badge" viewBox="0 0 100 100">
+                    <defs>
+                      <path
+                        id={`circlePathWork-${idx}`}
+                        d="M50,50 m-42,0 a42,42 0 1,1 84,0 a42,42 0 1,1 -84,0"
+                      />
+                    </defs>
+                    <text fontSize="8.6" letterSpacing="2" fill="#ffffff" fontWeight="600">
+                      <textPath href={`#circlePathWork-${idx}`}>VIEW LIVE DEMO • VIEW LIVE DEMO • </textPath>
+                    </text>
+                  </svg>
+                  <div className="arrow-c w-[30px] h-[30px] rounded-full bg-[#c9a876] text-[#0c0c0c] flex items-center justify-center text-[15px] relative z-[2]">
+                    ↗
+                  </div>
+                </a>
               </div>
-            </div>
-          ))}
+            );
+          })}
         </div>
       </div>
     </section>
   );
 };
+

@@ -4,103 +4,126 @@ interface Theme05PreloaderProps {
   onComplete: () => void;
 }
 
+const GREETINGS = [
+  { text: 'Hello', font: "'Inter', sans-serif", color: '#ffffff', weight: 800, italic: false },
+  { text: 'Namaste', font: "'Playfair Display', serif", color: '#c9a876', weight: 700, italic: true },
+  { text: 'Bonjour', font: "'Caveat', cursive", color: '#ffffff', weight: 700, italic: false },
+  { text: 'こんにちは', font: "'Noto Sans JP', sans-serif", color: '#c9a876', weight: 700, italic: false },
+  { text: 'Hola', font: "'Anton', sans-serif", color: '#ffffff', weight: 400, italic: false },
+  { text: '안녕하세요', font: "'Noto Sans KR', sans-serif", color: '#c9a876', weight: 700, italic: false },
+  { text: 'Ciao', font: "'Playfair Display', serif", color: '#ffffff', weight: 700, italic: true },
+  { text: 'مرحبا', font: "'Noto Sans Arabic', sans-serif", color: '#c9a876', weight: 700, italic: false },
+  { text: 'Guten Tag', font: "'Caveat', cursive", color: '#ffffff', weight: 700, italic: false },
+  { text: 'Hi, I’m Prajwal', font: "'Anton', sans-serif", color: '#c9a876', weight: 400, italic: false }
+];
+
 export const Theme05Preloader: React.FC<Theme05PreloaderProps> = ({ onComplete }) => {
-  const [counter, setCounter] = useState(0);
-  const [phase, setPhase] = useState<'counting' | 'signature' | 'fadeOut' | 'done'>('counting');
+  const [index, setIndex] = useState(0);
+  const [isWordActive, setIsWordActive] = useState(true);
+  const [phase, setPhase] = useState<'words' | 'signature' | 'fadeOut' | 'done'>('words');
 
   useEffect(() => {
-    const interval = setInterval(() => {
-      setCounter((prev) => {
-        if (prev >= 100) {
-          clearInterval(interval);
-          setPhase('signature');
-          return 100;
-        }
-        const step = Math.floor(Math.random() * 8) + 4;
-        return Math.min(100, prev + step);
-      });
-    }, 45);
+    if (phase !== 'words') return;
 
-    return () => clearInterval(interval);
-  }, []);
+    const HOLD = 360;
+    const GAP = 90;
+
+    const timer = setTimeout(() => {
+      setIsWordActive(false);
+
+      const nextTimer = setTimeout(() => {
+        if (index + 1 < GREETINGS.length) {
+          setIndex(index + 1);
+          setIsWordActive(true);
+        } else {
+          setPhase('signature');
+        }
+      }, GAP);
+
+      return () => clearTimeout(nextTimer);
+    }, HOLD);
+
+    return () => clearTimeout(timer);
+  }, [index, phase]);
 
   useEffect(() => {
     if (phase === 'signature') {
-      const timer1 = setTimeout(() => {
+      const t1 = setTimeout(() => {
         setPhase('fadeOut');
-      }, 1600);
+      }, 1200);
 
-      const timer2 = setTimeout(() => {
+      const t2 = setTimeout(() => {
         setPhase('done');
         onComplete();
-      }, 2200);
+      }, 2100);
 
       return () => {
-        clearTimeout(timer1);
-        clearTimeout(timer2);
+        clearTimeout(t1);
+        clearTimeout(t2);
       };
     }
   }, [phase, onComplete]);
 
   if (phase === 'done') return null;
 
+  const currentGreeting = GREETINGS[index] || GREETINGS[0];
+
   return (
     <div
-      className={`fixed inset-0 z-50 bg-[#0B0B0C] text-[#C9A876] flex flex-col items-center justify-center transition-all duration-700 ${
-        phase === 'fadeOut' ? 'opacity-0 -translate-y-full pointer-events-none' : 'opacity-100'
+      id="preloader"
+      className={`fixed inset-0 z-[9999] bg-[#0c0c0c] flex flex-col items-center justify-center transition-all duration-900 cubic-bezier(0.76, 0, 0.24, 1) ${
+        phase === 'fadeOut' ? '-translate-y-full opacity-0 pointer-events-none' : 'opacity-100'
       }`}
     >
-      <div className="relative flex flex-col items-center justify-center space-y-6 max-w-sm px-6 text-center select-none">
-        {phase === 'counting' && (
-          <div className="flex flex-col items-center space-y-4 animate-in fade-in duration-300">
-            {/* Center Percentage Counter */}
-            <div className="font-script-dancing text-6xl sm:text-7xl font-bold tracking-wider text-[#C9A876]">
-              {counter}%
-            </div>
-
-            {/* Rotating / Peeling SVG Brand Mark */}
-            <div className="w-10 h-10 relative flex items-center justify-center">
-              <svg
-                viewBox="0 0 100 100"
-                className="w-8 h-8 text-[#C9A876] animate-spin-badge"
-                fill="none"
-                stroke="currentColor"
-                strokeWidth="6"
-              >
-                <circle cx="50" cy="50" r="38" strokeDasharray="180 60" strokeLinecap="round" />
-                <path d="M50 20 L50 80 M20 50 L80 50" strokeWidth="4" />
-              </svg>
-            </div>
-
-            <span className="font-mono-jetbrains text-[10px] text-[#999999] tracking-[0.25em] uppercase">
-              INITIALIZING EXPERIENTIAL PORTFOLIO
-            </span>
+      {/* Hello Stage */}
+      {phase === 'words' && (
+        <div className="relative w-[80vw] max-w-[780px] h-[140px] flex items-center justify-center">
+          <div
+            className={`absolute left-1/2 top-1/2 whitespace-nowrap transform -translate-x-1/2 -translate-y-1/2 transition-all duration-450 ease-out text-[clamp(42px,9vw,104px)] select-none ${
+              isWordActive
+                ? 'opacity-100 blur-0 scale-100 rotate-0'
+                : 'opacity-0 blur-md scale-125 rotate-3'
+            }`}
+            style={{
+              fontFamily: currentGreeting.font,
+              color: currentGreeting.color,
+              fontWeight: currentGreeting.weight,
+              fontStyle: currentGreeting.italic ? 'italic' : 'normal',
+            }}
+          >
+            {currentGreeting.text}
           </div>
-        )}
 
-        {phase === 'signature' && (
-          <div className="flex flex-col items-center space-y-4 animate-in fade-in duration-500">
-            {/* Hand-drawn Cursive Initial 'P' SVG stroke-dashoffset animation */}
-            <div className="w-36 h-36 flex items-center justify-center">
-              <svg viewBox="0 0 120 120" className="w-32 h-32 text-[#C9A876]">
-                <path
-                  d="M 35 25 C 35 25, 35 95, 35 95 M 35 25 C 65 15, 95 35, 65 60 C 45 75, 35 60, 35 60"
-                  fill="none"
-                  stroke="currentColor"
-                  strokeWidth="6"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  className="signature-path"
-                />
-              </svg>
-            </div>
-
-            <span className="font-script-caveat text-2xl text-white tracking-widest">
-              Prajwal DL
-            </span>
+          {/* Dots tick indicator */}
+          <div className="absolute -bottom-10 left-1/2 transform -translate-x-1/2 flex gap-1.5">
+            {GREETINGS.map((_, i) => (
+              <span
+                key={i}
+                className={`w-1 h-1 rounded-full transition-all duration-250 ${
+                  i <= index ? 'bg-[#c9a876] scale-125' : 'bg-white/10'
+                }`}
+              />
+            ))}
           </div>
-        )}
-      </div>
+        </div>
+      )}
+
+      {/* Finale Signature */}
+      {(phase === 'signature' || phase === 'fadeOut') && (
+        <div className="flex flex-col items-center justify-center animate-in fade-in duration-300">
+          <svg viewBox="0 0 140 90" className="w-[180px] h-[110px]" fill="none">
+            <path
+              d="M20 70 C 20 30, 30 15, 38 15 C 46 15, 40 45, 30 60 C 40 55, 55 30, 65 30 C 72 30, 65 55, 70 60 C 78 50, 90 25, 100 25 C 108 25, 100 55, 112 45"
+              stroke="#c9a876"
+              strokeWidth="3"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              className="signature-path"
+            />
+          </svg>
+        </div>
+      )}
     </div>
   );
 };
+
