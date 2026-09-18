@@ -1,0 +1,144 @@
+@import url('https://fonts.googleapis.com/css2?family=Archivo+Black&family=Caveat:wght@600;700&family=Dancing+Script:wght@700&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap');
+
+:root {
+  --bg-cream: #F0EBE1;
+  --bg-dark: #0B0B0C;
+  --bg-card-dark: #121214;
+  --text-dark: #111111;
+  --text-light: #FFFFFF;
+  --text-muted: #999999;
+  --accent-gold: #C9A876;
+}
+
+.theme-05-root {
+  background-color: var(--bg-dark);
+  color: var(--text-light);
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  width: 100%;
+  min-height: 100vh;
+  box-sizing: border-box;
+  position: relative;
+  overflow-x: hidden;
+}
+
+.font-display-archivo {
+  font-family: 'Archivo Black', sans-serif;
+}
+
+.font-script-caveat {
+  font-family: 'Caveat', cursive;
+}
+
+.font-script-dancing {
+  font-family: 'Dancing Script', cursive;
+}
+
+.font-mono-jetbrains {
+  font-family: 'JetBrains Mono', monospace;
+}
+
+/* Rotating Badge Continuous Keyframe */
+@keyframes spinBadge {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.animate-spin-badge {
+  animation: spinBadge 12s linear infinite;
+}
+
+/* Signature SVG Stroke Dashoffset Animation */
+.signature-path {
+  stroke-dasharray: 600;
+  stroke-dashoffset: 600;
+  animation: drawSignature 1.8s cubic-bezier(0.65, 0, 0.35, 1) forwards;
+}
+
+@keyframes drawSignature {
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+/* Hero Cream Section Base */
+.hero-cream-section {
+  background-color: var(--bg-cream);
+  color: var(--text-dark);
+}
+
+/* Liquid Distortion Hover Target */
+.liquid-headline {
+  transition: filter 0.1s ease-out;
+}
+
+.liquid-headline.is-distorted {
+  filter: url(#liquid-distortion);
+}
+
+/* Horizontal Wipe Reveal */
+.horizontal-wipe {
+  transform-origin: left;
+  transition: transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* Marquee Seamless Infinite Loop */
+.marquee-track {
+  display: flex;
+  width: max-content;
+  animation: marqueeScroll 25s linear infinite;
+}
+
+.marquee-track:hover {
+  animation-play-state: paused;
+}
+
+@keyframes marqueeScroll {
+  0% {
+    transform: translateX(0%);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+/* Magnetic Tag Button Styling */
+.magnetic-tag {
+  position: relative;
+  overflow: hidden;
+  transition: color 0.3s ease, border-color 0.3s ease;
+}
+
+.magnetic-tag-bg {
+  position: absolute;
+  width: 140px;
+  height: 140px;
+  background-color: var(--text-dark);
+  border-radius: 50%;
+  transform: translate(-50%, -50%) scale(0);
+  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  pointer-events: none;
+  z-index: 0;
+}
+
+.magnetic-tag:hover .magnetic-tag-bg {
+  transform: translate(-50%, -50%) scale(1);
+}
+
+.magnetic-tag:hover {
+  color: var(--bg-cream) !important;
+  border-color: var(--text-dark) !important;
+}
+
+.magnetic-tag span {
+  position: relative;
+  z-index: 10;
+}
+
+/* Section Scroll Margins */
+#hero, #about, #expertise, #work, #contact {
+  scroll-margin-top: 80px;
+}
