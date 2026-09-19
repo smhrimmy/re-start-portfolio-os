@@ -1,0 +1,88 @@
+.architect-root {
+  background-color: #07090D;
+  color: #F2F5F7;
+  font-family: 'Inter', system-ui, sans-serif;
+  min-height: 100vh;
+  position: relative;
+  overflow-x: hidden;
+}
+
+/* Glassmorphism Panel */
+.architect-glass {
+  background: rgba(255, 255, 255, 0.06);
+  backdrop-filter: blur(16px) saturate(140%);
+  -webkit-backdrop-filter: blur(16px) saturate(140%);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+  border-radius: 16px;
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.architect-glass:hover {
+  background: rgba(255, 255, 255, 0.09);
+  border-color: rgba(36, 155, 255, 0.4);
+  box-shadow: 0 12px 40px 0 rgba(36, 155, 255, 0.15);
+}
+
+.architect-glass-interactive {
+  cursor: pointer;
+}
+
+.architect-glass-interactive:hover {
+  transform: translateY(-4px) scale(1.01);
+}
+
+/* Glow Elements */
+.glow-blue {
+  box-shadow: 0 0 25px rgba(36, 155, 255, 0.35);
+}
+
+.glow-amber {
+  box-shadow: 0 0 25px rgba(216, 149, 93, 0.35);
+}
+
+.text-gradient-cyan {
+  background: linear-gradient(135deg, #F2F5F7 0%, #69D9FF 50%, #249BFF 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.text-gradient-amber {
+  background: linear-gradient(135deg, #F2F5F7 0%, #D8955D 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* Animations */
+@keyframes spinSlow {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+.animate-spin-slow {
+  animation: spinSlow 20s linear infinite;
+}
+
+@keyframes pulseGlow {
+  0%, 100% { opacity: 0.4; }
+  50% { opacity: 0.8; }
+}
+
+.animate-pulse-glow {
+  animation: pulseGlow 4s ease-in-out infinite;
+}
+
+/* Custom Scrollbar */
+.architect-root::-webkit-scrollbar {
+  width: 6px;
+}
+.architect-root::-webkit-scrollbar-track {
+  background: #07090D;
+}
+.architect-root::-webkit-scrollbar-thumb {
+  background: rgba(36, 155, 255, 0.3);
+  border-radius: 3px;
+}
+.architect-root::-webkit-scrollbar-thumb:hover {
+  background: rgba(36, 155, 255, 0.6);
+}

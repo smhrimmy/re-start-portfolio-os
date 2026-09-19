@@ -6,6 +6,7 @@ import Theme03Component from './themes/theme-03';
 import Theme04Component from './themes/theme-04';
 import Theme05Component from './themes/theme-05';
 import Theme06Component from './themes/theme-06';
+import Theme07Component from './themes/theme-07';
 
 
 // protfoliov2 Admin Shell & 28 Admin Module Pages
@@ -49,7 +50,7 @@ import { AuthGuardModal } from './admin/components/AuthGuardModal';
 const MainShell: React.FC = () => {
   const { tier } = useMotion();
   const [view, setView] = useState<'public' | 'admin'>('public');
-  const [activeTheme, setActiveTheme] = useState<'theme-01' | 'theme-02' | 'theme-03' | 'theme-04' | 'theme-05' | 'theme-06'>('theme-06');
+  const [activeTheme, setActiveTheme] = useState<'theme-01' | 'theme-02' | 'theme-03' | 'theme-04' | 'theme-05' | 'theme-06' | 'theme-07'>('theme-07');
 
   const [currentRoute, setCurrentRoute] = useState<string>(window.location.pathname || '/admin/dashboard');
   const [isAuthenticated, setIsAuthenticated] = useState<boolean>(true);
@@ -213,6 +214,14 @@ const MainShell: React.FC = () => {
               >
                 Theme 06 Ethereal 3D
               </button>
+              <button
+                onClick={() => setActiveTheme('theme-07')}
+                className={`px-2 py-0.5 rounded text-[11px] ${
+                  activeTheme === 'theme-07' ? 'bg-[#249BFF] text-black font-bold' : 'text-neutral-400 hover:text-white'
+                }`}
+              >
+                Theme 07 Digital Architect
+              </button>
             </div>
           )}
           <button
@@ -245,8 +254,10 @@ const MainShell: React.FC = () => {
           <Theme04Component tier={tier} />
         ) : activeTheme === 'theme-05' ? (
           <Theme05Component tier={tier} />
-        ) : (
+        ) : activeTheme === 'theme-06' ? (
           <Theme06Component tier={tier} />
+        ) : (
+          <Theme07Component tier={tier} />
         )
       ) : !isAuthenticated ? (
         <AuthGuardModal isOpen={!isAuthenticated} onAuthenticate={handleAuthenticate} />
