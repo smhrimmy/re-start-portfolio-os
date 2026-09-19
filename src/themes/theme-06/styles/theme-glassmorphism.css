@@ -1,0 +1,78 @@
+@import url('https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&display=swap');
+@import url('https://api.fontshare.com/v2/css?f[]=satoshi@400,500,700&display=swap');
+
+.theme-06-root {
+  position: relative;
+  width: 100%;
+  min-height: 100vh;
+  background: linear-gradient(180deg, #FAFAF8 0%, #F5F3F0 100%);
+  color: #1A1A1A;
+  font-family: 'Satoshi', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  overflow-x: hidden;
+}
+
+.font-serif-instrument {
+  font-family: 'Instrument Serif', Georgia, serif;
+}
+
+.font-sans-satoshi {
+  font-family: 'Satoshi', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+}
+
+/* Hero */
+.hero-section {
+  position: relative;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 80px 24px 40px;
+}
+
+/* Sections */
+.projects-section,
+.experience-section,
+.skills-section,
+.blog-section,
+.contact-section {
+  position: relative;
+  z-index: 10;
+}
+
+/* Section Title */
+.section-title {
+  font-family: 'Instrument Serif', Georgia, serif;
+  font-size: clamp(2.2rem, 5vw, 3.5rem);
+  font-weight: 600;
+  line-height: 1.2;
+  margin-bottom: 48px;
+  color: #1A1A1A;
+  letter-spacing: -0.5px;
+}
+
+/* Buttons */
+.btn-primary {
+  position: relative;
+  overflow: hidden;
+  border: none;
+  cursor: pointer;
+  font-weight: 600;
+  background: linear-gradient(135deg, #0066FF, #00D4FF);
+  color: #FFFFFF;
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  box-shadow: 0 4px 14px rgba(0, 102, 255, 0.25);
+}
+
+.btn-primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 12px 24px rgba(0, 102, 255, 0.35);
+}
+
+.btn-primary:active {
+  transform: translateY(0px);
+}
+
+/* Scroll Margins */
+#hero, #work, #experience, #skills, #writing, #contact {
+  scroll-margin-top: 80px;
+}
