@@ -1,0 +1,183 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Your Name — Creative Developer Portfolio</title>
+  <meta name="description" content="Creative developer portfolio — crafting immersive digital experiences with code, design, and motion." />
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=Inter:wght@400;500&display=swap" rel="stylesheet" />
+
+  <!-- Styles -->
+  <link rel="stylesheet" href="index.css" />
+</head>
+<body>
+
+  <!-- ═══════════════ CUSTOM CURSOR ═══════════════ -->
+  <div class="cursor" aria-hidden="true">
+    <div class="cursor__dot"></div>
+    <div class="cursor__ring"></div>
+  </div>
+
+  <!-- ═══════════════ LOADER ═══════════════ -->
+  <div id="loader" aria-hidden="true">
+    <div class="loader__col">
+      <span class="loader__counter">0</span>
+      <div class="loader__bar"><div class="loader__fill"></div></div>
+      <p class="loader__label">LOADING EXPERIENCE</p>
+    </div>
+  </div>
+
+  <!-- ═══════════════ HEADER ═══════════════ -->
+  <header class="header">
+    <a class="header__brand" href="#hero">
+      YOUR<span>NAME</span>
+    </a>
+    <button class="header__menu" aria-label="Toggle navigation" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+  </header>
+
+  <!-- ═══════════════ FULL-SCREEN NAV OVERLAY ═══════════════ -->
+  <nav class="nav-overlay" aria-label="Primary navigation" aria-hidden="true">
+    <div class="nav-overlay__inner">
+      <div class="nav-overlay__links">
+        <a href="#hero" class="nav-overlay__link" data-hover>Home</a>
+        <a href="#about" class="nav-overlay__link" data-hover>About</a>
+        <a href="#work" class="nav-overlay__link" data-hover>Work</a>
+        <a href="#contact" class="nav-overlay__link" data-hover>Contact</a>
+      </div>
+      <div class="nav-overlay__footer">
+        <a href="#" data-hover>GitHub</a>
+        <a href="#" data-hover>LinkedIn</a>
+        <a href="#" data-hover>Twitter / X</a>
+        <a href="mailto:hello@example.com" data-hover>hello@example.com</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- ═══════════════ MAIN ═══════════════ -->
+  <main>
+
+    <!-- ——— HERO ——— -->
+    <section id="hero" class="hero">
+      <div class="hero__content">
+        <p class="hero__eyebrow reveal-text">Creative Developer &amp; Digital Maker</p>
+        <h1 class="hero__heading">
+          <span class="line reveal-text">I craft</span>
+          <span class="line reveal-text"><em>digital</em></span>
+          <span class="line reveal-text">experiences.</span>
+        </h1>
+        <p class="hero__sub reveal-text">Blending design, code, and motion into memorable interfaces that move people — literally and figuratively.</p>
+        <a class="btn magnetic" href="#work" data-hover>
+          <span class="btn__text">Explore Work</span>
+          <span class="btn__arrow">↗</span>
+        </a>
+      </div>
+
+      <!-- Animated blob canvas -->
+      <canvas id="blob-canvas" aria-hidden="true"></canvas>
+
+      <!-- Marquee strip -->
+      <div class="marquee" aria-hidden="true">
+        <div class="marquee__track">
+          <span>CREATIVE DEVELOPER &bull; DIGITAL EXPERIENCES &bull; INTERACTION DESIGN &bull; MOTION &amp; CODE &bull;&nbsp;</span>
+          <span>CREATIVE DEVELOPER &bull; DIGITAL EXPERIENCES &bull; INTERACTION DESIGN &bull; MOTION &amp; CODE &bull;&nbsp;</span>
+        </div>
+      </div>
+
+      <div class="hero__scroll-hint">
+        <span>Scroll</span>
+        <div class="hero__scroll-line"></div>
+      </div>
+    </section>
+
+    <!-- ——— ABOUT ——— -->
+    <section id="about" class="about">
+      <div class="section-tag">01 / About</div>
+      <div class="about__grid">
+        <div class="about__left">
+          <h2 class="about__heading reveal-text">
+            <span class="line">Code, design</span>
+            <span class="line"><em>&amp; motion.</em></span>
+          </h2>
+        </div>
+        <div class="about__right">
+          <p class="reveal-text">I build memorable digital products by combining thoughtful interfaces, expressive motion, and robust frontend engineering.</p>
+          <p class="reveal-text">With a focus on performance and user delight, every project is an opportunity to push the boundary between what's functional and what's beautiful.</p>
+          <div class="about__stats">
+            <div class="stat">
+              <strong class="stat__number">04+</strong>
+              <span class="stat__label">Years Experience</span>
+            </div>
+            <div class="stat">
+              <strong class="stat__number">30</strong>
+              <span class="stat__label">Projects Shipped</span>
+            </div>
+            <div class="stat">
+              <strong class="stat__number">12</strong>
+              <span class="stat__label">Happy Clients</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ——— WORK (Horizontal scroll) ——— -->
+    <section id="work" class="work">
+      <div class="section-tag">02 / Selected Work</div>
+      <div class="work__header">
+        <h2 class="work__heading reveal-text">
+          <span class="line">Selected</span>
+          <span class="line"><em>projects.</em></span>
+        </h2>
+      </div>
+      <div class="work__scroller">
+        <div class="work__track" id="project-track">
+          <!-- Panels injected by addcards.js -->
+        </div>
+      </div>
+    </section>
+
+    <!-- ——— CONTACT ——— -->
+    <section id="contact" class="contact">
+      <div class="section-tag">03 / Contact</div>
+      <div class="contact__inner">
+        <p class="contact__eyebrow reveal-text">Have a project in mind?</p>
+        <h2 class="contact__heading reveal-text">
+          <span class="line">Let's make</span>
+          <span class="line"><em>it happen.</em></span>
+        </h2>
+        <a class="btn btn--large magnetic" href="mailto:hello@example.com" data-hover>
+          <span class="btn__text">Start a Conversation</span>
+          <span class="btn__arrow">↗</span>
+        </a>
+        <div class="contact__socials">
+          <a href="#" data-hover>GitHub</a>
+          <a href="#" data-hover>LinkedIn</a>
+          <a href="#" data-hover>Instagram</a>
+          <a href="#" data-hover>Twitter / X</a>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ═══════════════ FOOTER ═══════════════ -->
+  <footer class="footer">
+    <span>&copy; 2026 — Your Name</span>
+    <a href="#hero" class="footer__top magnetic" data-hover>Back to top ↑</a>
+  </footer>
+
+  <!-- ═══════════════ SCRIPTS (CDN) ═══════════════ -->
+  <script src="https://cdn.jsdelivr.net/npm/lenis@1.1.18/dist/lenis.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+  <script src="addcards.js"></script>
+  <script src="index.js"></script>
+
+</body>
+</html>
