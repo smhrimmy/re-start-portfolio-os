@@ -7,6 +7,7 @@ import { theme05Config } from './theme-05/config';
 import { theme06Config } from './theme-06/config';
 import { theme07Config } from './theme-07/config';
 import { theme08Config } from './theme-08/config';
+import { theme09Config } from './theme-09/config';
 import { themeTemplateConfig } from './theme-template';
 
 const themeRegistry = new Map<string, ThemeConfig>();
@@ -39,6 +40,7 @@ registerTheme(theme05Config);
 registerTheme(theme06Config);
 registerTheme(theme07Config);
 registerTheme(theme08Config);
+registerTheme(theme09Config);
 registerTheme(themeTemplateConfig);
 
 

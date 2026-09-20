@@ -8,6 +8,7 @@ import Theme05Component from './themes/theme-05';
 import Theme06Component from './themes/theme-06';
 import Theme07Component from './themes/theme-07';
 import Theme08Component from './themes/theme-08';
+import Theme09Component from './themes/theme-09';
 
 
 // protfoliov2 Admin Shell & 28 Admin Module Pages
@@ -51,7 +52,7 @@ import { AuthGuardModal } from './admin/components/AuthGuardModal';
 const MainShell: React.FC = () => {
   const { tier } = useMotion();
   const [view, setView] = useState<'public' | 'admin'>('public');
-  const [activeTheme, setActiveTheme] = useState<'theme-01' | 'theme-02' | 'theme-03' | 'theme-04' | 'theme-05' | 'theme-06' | 'theme-07' | 'theme-08'>('theme-08');
+  const [activeTheme, setActiveTheme] = useState<'theme-01' | 'theme-02' | 'theme-03' | 'theme-04' | 'theme-05' | 'theme-06' | 'theme-07' | 'theme-08' | 'theme-09'>('theme-09');
 
   const [currentRoute, setCurrentRoute] = useState<string>(window.location.pathname || '/admin/dashboard');
   const [isAuthenticated, setIsAuthenticated] = useState<boolean>(true);
@@ -231,6 +232,14 @@ const MainShell: React.FC = () => {
               >
                 Theme 08 Pause Menu OS
               </button>
+              <button
+                onClick={() => setActiveTheme('theme-09')}
+                className={`px-2 py-0.5 rounded text-[11px] ${
+                  activeTheme === 'theme-09' ? 'bg-[#FF6600] text-black font-bold' : 'text-neutral-400 hover:text-white'
+                }`}
+              >
+                Theme 09 ERA Select OS
+              </button>
             </div>
           )}
           <button
@@ -267,8 +276,10 @@ const MainShell: React.FC = () => {
           <Theme06Component tier={tier} />
         ) : activeTheme === 'theme-07' ? (
           <Theme07Component tier={tier} />
-        ) : (
+        ) : activeTheme === 'theme-08' ? (
           <Theme08Component tier={tier} />
+        ) : (
+          <Theme09Component tier={tier} />
         )
       ) : !isAuthenticated ? (
         <AuthGuardModal isOpen={!isAuthenticated} onAuthenticate={handleAuthenticate} />
