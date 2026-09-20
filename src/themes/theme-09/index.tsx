@@ -212,7 +212,7 @@ export const Theme09Component: React.FC<Theme09Props> = ({ tier }) => {
       label: 'About',
       title: 'About Me',
       kicker: 'Profile',
-      body: identity?.summary || 'Passionate software engineer creating high-performance web systems, spatial UI, and interactive digital experiences.',
+      body: identity?.bio || 'Passionate software engineer creating high-performance web systems, spatial UI, and interactive digital experiences.',
       tags: [identity?.location || 'India', 'Open to work', 'Full-Stack'],
     },
     {
