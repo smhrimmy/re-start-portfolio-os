@@ -28,12 +28,19 @@ export interface EraLabels {
 export interface EraSpec {
   id: string;
   code: string;
+  shortName: string;
+  name: string;
   label: string;
   year: string;
   tagline: string;
   character: string;
   backdrop: string;
   minimap: string;
+  accent: string;
+  bg: string;
+  panelBorder: string;
+  characterBadge: string;
+  assetPak: string;
   sfx?: string;
   tokens: EraTokens;
   labels: EraLabels;
@@ -43,12 +50,19 @@ export const ERAS: Record<string, EraSpec> = {
   three: {
     id: 'three',
     code: 'III',
+    shortName: 'III',
+    name: 'LIBERTY CITY',
     label: 'LIBERTY CITY',
     year: '2001',
     tagline: 'KEEP YOUR HEAD DOWN',
     character: '/assets/character-reference.png',
     backdrop: 'radial-gradient(ellipse at center, #1E2228 0%, #15181C 100%)',
     minimap: '/art/map-liberty.webp',
+    accent: '#c8552b',
+    bg: '#15181c',
+    panelBorder: '2px solid #3a4048',
+    characterBadge: 'III · OPERATOR',
+    assetPak: 'STREAMING ASSETS · LIBERTY_CITY_2001.PAK',
     tokens: {
       '--bg': '#15181c',
       '--bg-2': '#1e2228',
@@ -79,12 +93,19 @@ export const ERAS: Record<string, EraSpec> = {
   viceCity: {
     id: 'viceCity',
     code: 'VC',
+    shortName: 'VC',
+    name: 'VICE CITY',
     label: 'VICE CITY',
     year: '1986',
     tagline: 'STAY LEGENDARY',
     character: '/assets/character-reference.png',
     backdrop: 'radial-gradient(ellipse at center, #2A1052 0%, #160B2E 100%)',
     minimap: '/art/map-vice.webp',
+    accent: '#ff3fb4',
+    bg: '#160b2e',
+    panelBorder: '2px solid #ff3fb4',
+    characterBadge: 'VC · OPERATOR',
+    assetPak: 'STREAMING ASSETS · VICE_CITY_1986.PAK',
     tokens: {
       '--bg': '#160b2e',
       '--bg-2': '#2a1052',
@@ -115,12 +136,19 @@ export const ERAS: Record<string, EraSpec> = {
   sanAndreas: {
     id: 'sanAndreas',
     code: 'SA',
+    shortName: 'SA',
+    name: 'SAN ANDREAS',
     label: 'SAN ANDREAS',
     year: '1992',
     tagline: 'RESPECT IS EARNED',
     character: '/assets/character-reference.png',
     backdrop: 'radial-gradient(ellipse at center, #2B3318 0%, #181C10 100%)',
     minimap: '/art/map-sa.webp',
+    accent: '#9ecb3c',
+    bg: '#181c10',
+    panelBorder: '3px solid #6d7a32',
+    characterBadge: 'SA · OPERATOR',
+    assetPak: 'STREAMING ASSETS · SAN_ANDREAS_1992.PAK',
     tokens: {
       '--bg': '#181c10',
       '--bg-2': '#2b3318',
@@ -151,12 +179,19 @@ export const ERAS: Record<string, EraSpec> = {
   four: {
     id: 'four',
     code: 'IV',
+    shortName: 'IV',
+    name: 'LIBERTY CITY',
     label: 'LIBERTY CITY',
     year: '2008',
     tagline: 'THE AMERICAN DREAM, ALLEGEDLY',
     character: '/assets/character-reference.png',
     backdrop: 'radial-gradient(ellipse at center, #1B2229 0%, #12161A 100%)',
     minimap: '/art/map-liberty-hd.webp',
+    accent: '#d9a441',
+    bg: '#12161a',
+    panelBorder: '1px solid #38424c',
+    characterBadge: 'IV · OPERATOR',
+    assetPak: 'STREAMING ASSETS · LIBERTY_CITY_2008.PAK',
     tokens: {
       '--bg': '#12161a',
       '--bg-2': '#1b2229',
@@ -187,12 +222,19 @@ export const ERAS: Record<string, EraSpec> = {
   five: {
     id: 'five',
     code: 'V',
+    shortName: 'V',
+    name: 'LOS SANTOS',
     label: 'LOS SANTOS',
     year: '2013',
     tagline: 'BUILD DIFFERENT',
     character: '/assets/character-reference.png',
     backdrop: 'radial-gradient(ellipse at center, #1F2228 0%, #0D0F12 100%)',
     minimap: '/art/map-losantos.webp',
+    accent: '#f2a01d',
+    bg: '#0d0f12',
+    panelBorder: '0px solid transparent',
+    characterBadge: 'V · OPERATOR',
+    assetPak: 'STREAMING ASSETS · LOS_SANTOS_2013.PAK',
     tokens: {
       '--bg': '#0d0f12',
       '--bg-2': '#f4f4f2',
@@ -223,12 +265,19 @@ export const ERAS: Record<string, EraSpec> = {
   six: {
     id: 'six',
     code: 'VI',
+    shortName: 'VI',
+    name: 'LEONIDA',
     label: 'LEONIDA',
     year: '2025',
     tagline: 'THE NEXT CHAPTER',
     character: '/assets/character-reference.png',
     backdrop: 'radial-gradient(ellipse at center, #3B1F4A 0%, #1A0F22 100%)',
     minimap: '/art/map-leonida.webp',
+    accent: '#ff7a59',
+    bg: '#1a0f22',
+    panelBorder: '1px solid rgba(255,255,255,0.22)',
+    characterBadge: 'VI · OPERATOR',
+    assetPak: 'STREAMING ASSETS · LEONIDA_2025.PAK',
     tokens: {
       '--bg': '#1a0f22',
       '--bg-2': '#3b1f4a',
@@ -259,3 +308,4 @@ export const ERAS: Record<string, EraSpec> = {
 
 export const ERA_ORDER = ['three', 'viceCity', 'sanAndreas', 'four', 'five', 'six'];
 export const DEFAULT_ERA = 'five';
+export const GTA_ERAS: EraSpec[] = ERA_ORDER.map((id) => ERAS[id]);

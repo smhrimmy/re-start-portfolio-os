@@ -30,7 +30,7 @@ export const Theme09Component: React.FC<Theme09Props> = ({ tier }) => {
   // Saved Era in localStorage (default to GTA V)
   const [currentEra, setCurrentEra] = useState<EraSpec>(() => {
     const savedId = typeof window !== 'undefined' ? localStorage.getItem('gta_active_era') : null;
-    return GTA_ERAS.find((e) => e.id === savedId) || GTA_ERAS[4]; // Default to GTA V
+    return GTA_ERAS.find((e: EraSpec) => e.id === savedId) || GTA_ERAS[4]; // Default to GTA V
   });
 
   const [isWiping, setIsWiping] = useState(false);

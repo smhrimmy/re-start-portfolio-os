@@ -9,7 +9,7 @@ interface EraSwitcherProps {
 export const EraSwitcher: React.FC<EraSwitcherProps> = ({ currentEra, onSelectEra }) => {
   const [showWheel, setShowWheel] = useState(false);
 
-  const currentIndex = GTA_ERAS.findIndex((e) => e.id === currentEra.id);
+  const currentIndex = GTA_ERAS.findIndex((e: EraSpec) => e.id === currentEra.id);
 
   const cyclePrevious = () => {
     const nextIdx = currentIndex > 0 ? currentIndex - 1 : GTA_ERAS.length - 1;
@@ -79,7 +79,7 @@ export const EraSwitcher: React.FC<EraSwitcherProps> = ({ currentEra, onSelectEr
           </div>
 
           <div className="grid grid-cols-2 gap-2">
-            {GTA_ERAS.map((era) => {
+            {GTA_ERAS.map((era: EraSpec) => {
               const isSelected = era.id === currentEra.id;
               return (
                 <button
