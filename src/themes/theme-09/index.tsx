@@ -8,6 +8,7 @@ import { LoadingWipe } from './components/LoadingWipe';
 import { GtaHudTop } from './components/GtaHudTop';
 import { GtaHudBottom } from './components/GtaHudBottom';
 import { CharacterPlate } from './components/CharacterPlate';
+import { AcademyTab } from './components/AcademyTab';
 import { soundSynth } from '../theme-08/soundSynth';
 
 import { ResumeTab } from '../theme-08/components/tabs/ResumeTab';
@@ -26,6 +27,8 @@ interface Theme09Props {
   tier: DeviceTier;
 }
 
+const KONAMI_CODE = ['ArrowUp', 'ArrowUp', 'ArrowDown', 'ArrowDown', 'ArrowLeft', 'ArrowRight', 'ArrowLeft', 'ArrowRight', 'b', 'a'];
+
 export const Theme09Component: React.FC<Theme09Props> = ({ tier }) => {
   // Saved Era in localStorage (default to GTA V)
   const [currentEra, setCurrentEra] = useState<EraSpec>(() => {
@@ -35,7 +38,10 @@ export const Theme09Component: React.FC<Theme09Props> = ({ tier }) => {
 
   const [isWiping, setIsWiping] = useState(false);
   const [activeTab, setActiveTab] = useState<number>(0);
+  const [activeTopTab, setActiveTopTab] = useState<string>('GAME');
   const [visitedTabs, setVisitedTabs] = useState<Set<number>>(() => new Set([0]));
+  const [customCash, setCustomCash] = useState<number | undefined>(undefined);
+  const [cheatNotification, setCheatNotification] = useState<string | null>(null);
 
   const [identity, setIdentity] = useState<PortfolioIdentity>(mockStorage.getIdentity());
   const [projects, setProjects] = useState<Project[]>(mockStorage.getProjects());
@@ -74,6 +80,7 @@ export const Theme09Component: React.FC<Theme09Props> = ({ tier }) => {
 
   const selectTab = (id: number) => {
     setActiveTab(id);
+    setActiveTopTab('GAME');
     setVisitedTabs((prev) => {
       const next = new Set(prev);
       next.add(id);
@@ -81,12 +88,36 @@ export const Theme09Component: React.FC<Theme09Props> = ({ tier }) => {
     });
   };
 
-  // Keyboard navigation for ArrowUp/Down and Esc
+  // Konami & Cheat Code Input Listener ('HESOYAM' or Konami Sequence)
   useEffect(() => {
+    let keyBuffer: string[] = [];
+    let textBuffer = '';
+
     const handleKeyDown = (e: KeyboardEvent) => {
       if (e.target instanceof HTMLInputElement || e.target instanceof HTMLTextAreaElement) {
         return;
       }
+
+      // Check Konami Code
+      keyBuffer.push(e.key);
+      keyBuffer = keyBuffer.slice(-KONAMI_CODE.length);
+      if (keyBuffer.join() === KONAMI_CODE.join()) {
+        activateCheat('HESOYAM');
+        return;
+      }
+
+      // Check Text Cheats (e.g. typing "hesoyam")
+      if (e.key.length === 1 && /[a-zA-Z]/.test(e.key)) {
+        textBuffer += e.key.toLowerCase();
+        if (textBuffer.length > 20) textBuffer = textBuffer.slice(-20);
+
+        if (textBuffer.endsWith('hesoyam')) {
+          activateCheat('HESOYAM');
+          textBuffer = '';
+        }
+      }
+
+      // Standard Keyboard Hotkeys
       if (e.key === 'Escape') {
         e.preventDefault();
         soundSynth.playSelect();
@@ -94,29 +125,57 @@ export const Theme09Component: React.FC<Theme09Props> = ({ tier }) => {
       } else if (e.key === 'ArrowUp') {
         e.preventDefault();
         soundSynth.playMove();
-        selectTab(activeTab > 0 ? activeTab - 1 : 8);
+        selectTab(activeTab > 0 ? activeTab - 1 : 9);
       } else if (e.key === 'ArrowDown') {
         e.preventDefault();
         soundSynth.playMove();
-        selectTab(activeTab < 8 ? activeTab + 1 : 0);
+        selectTab(activeTab < 9 ? activeTab + 1 : 0);
       }
+    };
+
+    const activateCheat = (code: string) => {
+      soundSynth.playSelect();
+      setCustomCash(999999999);
+      setCheatNotification(`CHEAT ACTIVATED: ${code} — FULL HEALTH, ARMOR & $250k`);
+      setTimeout(() => {
+        setCheatNotification(null);
+      }, 4000);
     };
 
     window.addEventListener('keydown', handleKeyDown);
     return () => window.removeEventListener('keydown', handleKeyDown);
   }, [activeTab]);
 
+  // Handle Top Tab Selection
+  const handleSelectTopTab = (tab: string) => {
+    setActiveTopTab(tab);
+    if (tab === 'GAME') {
+      setActiveTab(0);
+    } else if (tab === 'STATS') {
+      setActiveTab(3); // Skills
+    } else if (tab === 'BRIEF') {
+      setActiveTab(0); // Resume
+    } else if (tab === 'MAP') {
+      setActiveTab(2); // Projects / Territories
+    } else if (tab === 'SOCIAL') {
+      setActiveTab(8); // Contact
+    } else if (tab === 'SETTINGS') {
+      setActiveTab(9); // Credits
+    }
+  };
+
   // Dynamic Era-Specific Nav Labels
   const navTabs = [
-    { id: 0, label: 'RESUME' },
+    { id: 0, label: 'START' },
     { id: 1, label: 'PROFILE' },
     { id: 2, label: currentEra.labels.projects },
     { id: 3, label: currentEra.labels.skills },
     { id: 4, label: 'INVENTORY' },
     { id: 5, label: currentEra.labels.experience },
     { id: 6, label: 'ACHIEVEMENTS' },
-    { id: 7, label: currentEra.labels.contact },
-    { id: 8, label: 'CREDITS' },
+    { id: 7, label: currentEra.labels.academy || 'ACADEMY' },
+    { id: 8, label: currentEra.labels.contact },
+    { id: 9, label: 'CREDITS' },
   ];
 
   return (
@@ -131,13 +190,29 @@ export const Theme09Component: React.FC<Theme09Props> = ({ tier }) => {
       {/* Loading Screen Wipe Transition */}
       {isWiping && <LoadingWipe era={currentEra} />}
 
+      {/* Cheat Code Activation Toast */}
+      {cheatNotification && (
+        <div
+          className="fixed top-16 left-1/2 -translate-x-1/2 z-50 px-6 py-2 rounded-lg font-mono text-xs font-bold text-black shadow-2xl animate-bounce"
+          style={{ backgroundColor: currentEra.accent }}
+        >
+          {cheatNotification}
+        </div>
+      )}
+
       {/* TOP HUD BAR (56px) */}
       <div className="col-span-1 md:col-span-2 z-30">
-        <GtaHudTop era={currentEra} visitedCount={visitedTabs.size} />
+        <GtaHudTop
+          era={currentEra}
+          visitedCount={visitedTabs.size}
+          activeTopTab={activeTopTab}
+          onSelectTopTab={handleSelectTopTab}
+          customCash={customCash}
+        />
       </div>
 
       {/* LEFT ERA-ADAPTED TAB NAVIGATION RAIL (260px) */}
-      <aside className="hidden md:flex flex-col justify-between p-4 z-20 bg-black/75 border-r border-white/15">
+      <aside className="hidden md:flex flex-col justify-between p-4 z-20 bg-black/75 border-r border-white/15 overflow-y-auto">
         <div className="space-y-4">
           {/* Character Portrait Plate */}
           <CharacterPlate era={currentEra} identity={identity} />
@@ -214,13 +289,19 @@ export const Theme09Component: React.FC<Theme09Props> = ({ tier }) => {
           />
         )}
         {activeTab === 7 && (
+          <AcademyTab
+            identity={identity}
+            accentColor={currentEra.accent}
+          />
+        )}
+        {activeTab === 8 && (
           <UplinkTab
             identity={identity}
             accentColor={currentEra.accent}
             onTransmissionSuccess={() => selectTab(6)}
           />
         )}
-        {activeTab === 8 && (
+        {activeTab === 9 && (
           <CreditsTab
             onReturnToResume={() => selectTab(0)}
             accentColor={currentEra.accent}
@@ -233,7 +314,7 @@ export const Theme09Component: React.FC<Theme09Props> = ({ tier }) => {
         <GtaHudBottom
           era={currentEra}
           onSelectEra={handleSelectEra}
-          hintText={`ACTIVE ERA: ${currentEra.name} (${currentEra.year}) — ${currentEra.tagline}`}
+          hintText={`ACTIVE OPERATOR: ${currentEra.characterInfo.alias} (${currentEra.year}) — TYPE 'HESOYAM' FOR CHEAT`}
         />
       </div>
     </div>
@@ -241,3 +322,4 @@ export const Theme09Component: React.FC<Theme09Props> = ({ tier }) => {
 };
 
 export default Theme09Component;
+

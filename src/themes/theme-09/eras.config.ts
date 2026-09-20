@@ -21,8 +21,28 @@ export interface EraLabels {
   projects: string;
   experience: string;
   achievements: string;
+  academy?: string;
   contact: string;
   cta: string;
+}
+
+export interface CharacterPersona {
+  alias: string;
+  operatorRole: string;
+  specialty: string;
+  primaryWeapon: string;
+  location: string;
+  wantedLevel: number;
+  cashValue: number;
+  bio: string;
+  stats: {
+    stamina: number;
+    shooting: number;
+    strength: number;
+    stealth: number;
+    flying: number;
+    driving: number;
+  };
 }
 
 export interface EraSpec {
@@ -41,6 +61,7 @@ export interface EraSpec {
   panelBorder: string;
   characterBadge: string;
   assetPak: string;
+  characterInfo: CharacterPersona;
   sfx?: string;
   tokens: EraTokens;
   labels: EraLabels;
@@ -61,8 +82,26 @@ export const ERAS: Record<string, EraSpec> = {
     accent: '#c8552b',
     bg: '#15181c',
     panelBorder: '2px solid #3a4048',
-    characterBadge: 'III · OPERATOR',
+    characterBadge: 'CLAUDE SPEED · III',
     assetPak: 'STREAMING ASSETS · LIBERTY_CITY_2001.PAK',
+    characterInfo: {
+      alias: 'CLAUDE SPEED · SILENT ARCHITECT',
+      operatorRole: 'No-Nonsense Systems Specialist',
+      specialty: 'Low-Level Performance & Metal',
+      primaryWeapon: 'TypeScript / Rust / C++',
+      location: 'Portland Harbour, Liberty City',
+      wantedLevel: 3,
+      cashValue: 450000,
+      bio: 'Quiet, disciplined, and relentlessly focused on execution. Builds resilient low-level systems that run silent and unyielding.',
+      stats: {
+        stamina: 90,
+        shooting: 85,
+        strength: 95,
+        stealth: 90,
+        flying: 60,
+        driving: 95,
+      },
+    },
     tokens: {
       '--bg': '#15181c',
       '--bg-2': '#1e2228',
@@ -85,6 +124,7 @@ export const ERAS: Record<string, EraSpec> = {
       projects: 'MISSIONS',
       experience: 'RAP SHEET',
       achievements: 'REWARDS',
+      academy: 'ACADEMY',
       contact: 'PAYPHONE',
       cta: 'START GAME',
     },
@@ -104,8 +144,26 @@ export const ERAS: Record<string, EraSpec> = {
     accent: '#ff3fb4',
     bg: '#160b2e',
     panelBorder: '2px solid #ff3fb4',
-    characterBadge: 'VC · OPERATOR',
+    characterBadge: 'TOMMY VERCETTI · VC',
     assetPak: 'STREAMING ASSETS · VICE_CITY_1986.PAK',
+    characterInfo: {
+      alias: 'TOMMY VERCETTI · NEON EXECUTIVE',
+      operatorRole: 'Full-Stack Empire Builder',
+      specialty: 'Vibrant Motion & Dynamic UI',
+      primaryWeapon: 'React / WebGL / Synthwave',
+      location: 'Starfish Island Mansion, Vice City',
+      wantedLevel: 4,
+      cashValue: 1250000,
+      bio: 'Bold, flamboyant, and commanding. Transforms ambitious ideas into multi-million dollar digital empires with zero compromise.',
+      stats: {
+        stamina: 85,
+        shooting: 90,
+        strength: 90,
+        stealth: 70,
+        flying: 80,
+        driving: 90,
+      },
+    },
     tokens: {
       '--bg': '#160b2e',
       '--bg-2': '#2a1052',
@@ -128,6 +186,7 @@ export const ERAS: Record<string, EraSpec> = {
       projects: 'CASE STUDIES',
       experience: 'EXPERIENCE LOG',
       achievements: 'TROPHIES',
+      academy: 'EDUCATION',
       contact: 'CONTACT SAFE',
       cta: 'START GAME',
     },
@@ -147,8 +206,26 @@ export const ERAS: Record<string, EraSpec> = {
     accent: '#9ecb3c',
     bg: '#181c10',
     panelBorder: '3px solid #6d7a32',
-    characterBadge: 'SA · OPERATOR',
+    characterBadge: 'CJ JOHNSON · SA',
     assetPak: 'STREAMING ASSETS · SAN_ANDREAS_1992.PAK',
+    characterInfo: {
+      alias: 'CJ JOHNSON · GROOVE ST. ENGINEER',
+      operatorRole: 'Adaptable Lead Strategist',
+      specialty: 'Respect, Turf Control & Scaling',
+      primaryWeapon: 'Node.js / Docker / SQL',
+      location: 'Ganton, Los Santos, SA',
+      wantedLevel: 5,
+      cashValue: 2480000,
+      bio: 'Earned every bit of respect through grit and continuous skill leveling. Owns the entire stack from database to edge.',
+      stats: {
+        stamina: 100,
+        shooting: 95,
+        strength: 95,
+        stealth: 85,
+        flying: 90,
+        driving: 100,
+      },
+    },
     tokens: {
       '--bg': '#181c10',
       '--bg-2': '#2b3318',
@@ -171,6 +248,7 @@ export const ERAS: Record<string, EraSpec> = {
       projects: 'TERRITORIES',
       experience: 'HISTORY',
       achievements: 'STREET CRED',
+      academy: 'TRAINING',
       contact: 'HOMIES',
       cta: 'START GAME',
     },
@@ -190,8 +268,26 @@ export const ERAS: Record<string, EraSpec> = {
     accent: '#d9a441',
     bg: '#12161a',
     panelBorder: '1px solid #38424c',
-    characterBadge: 'IV · OPERATOR',
+    characterBadge: 'NIKO BELLIC · IV',
     assetPak: 'STREAMING ASSETS · LIBERTY_CITY_2008.PAK',
+    characterInfo: {
+      alias: 'NIKO BELLIC · HARBOR CITY VETERAN',
+      operatorRole: 'Gritty Microservices Operator',
+      specialty: 'Fault-Tolerant Distributed Backend',
+      primaryWeapon: 'Go / PostgreSQL / Linux',
+      location: 'Hove Beach, Broker, LC',
+      wantedLevel: 3,
+      cashValue: 890000,
+      bio: 'Survived tough tech stacks and legacy codebase battles. Delivers rock-solid reliability under intense pressure.',
+      stats: {
+        stamina: 95,
+        shooting: 90,
+        strength: 100,
+        stealth: 80,
+        flying: 75,
+        driving: 85,
+      },
+    },
     tokens: {
       '--bg': '#12161a',
       '--bg-2': '#1b2229',
@@ -214,6 +310,7 @@ export const ERAS: Record<string, EraSpec> = {
       projects: 'CONTRACTS',
       experience: 'CRIMINAL RECORD',
       achievements: 'ACCOLADES',
+      academy: 'ACADEMY',
       contact: 'PHONE',
       cta: 'START GAME',
     },
@@ -233,8 +330,26 @@ export const ERAS: Record<string, EraSpec> = {
     accent: '#f2a01d',
     bg: '#0d0f12',
     panelBorder: '0px solid transparent',
-    characterBadge: 'V · OPERATOR',
+    characterBadge: 'MICHAEL, FRANKLIN & TREVOR · V',
     assetPak: 'STREAMING ASSETS · LOS_SANTOS_2013.PAK',
+    characterInfo: {
+      alias: 'MICHAEL, FRANKLIN & TREVOR · TRIO ARCHITECT',
+      operatorRole: 'Master Heist Planner & Lead',
+      specialty: 'High-Stakes Cloud & Realtime Systems',
+      primaryWeapon: 'Next.js / GraphQL / Redis',
+      location: 'Vinewood Hills, Los Santos',
+      wantedLevel: 5,
+      cashValue: 5400000,
+      bio: 'Combines precision planning, street-smart execution, and chaotic creative energy to pull off impossible digital heists.',
+      stats: {
+        stamina: 95,
+        shooting: 98,
+        strength: 92,
+        stealth: 88,
+        flying: 95,
+        driving: 98,
+      },
+    },
     tokens: {
       '--bg': '#0d0f12',
       '--bg-2': '#f4f4f2',
@@ -257,6 +372,7 @@ export const ERAS: Record<string, EraSpec> = {
       projects: 'HEISTS',
       experience: 'CAREER LOG',
       achievements: 'AWARDS',
+      academy: 'ACADEMY',
       contact: 'CONTACTS',
       cta: 'START GAME',
     },
@@ -276,8 +392,26 @@ export const ERAS: Record<string, EraSpec> = {
     accent: '#ff7a59',
     bg: '#1a0f22',
     panelBorder: '1px solid rgba(255,255,255,0.22)',
-    characterBadge: 'VI · OPERATOR',
+    characterBadge: 'LUCIA & JASON · VI',
     assetPak: 'STREAMING ASSETS · LEONIDA_2025.PAK',
+    characterInfo: {
+      alias: 'LUCIA & JASON · LEONIDA PIONEER',
+      operatorRole: 'Next-Gen AI & Spatial Developer',
+      specialty: 'Generative AI, WebGPU & Spatial OS',
+      primaryWeapon: 'PyTorch / WebGPU / Three.js',
+      location: 'Vice Port, Leonida',
+      wantedLevel: 4,
+      cashValue: 12800000,
+      bio: 'Riding the crest of the next digital frontier. Harnessing neural models and 3D Diegetic UI to craft future web experiences.',
+      stats: {
+        stamina: 98,
+        shooting: 96,
+        strength: 94,
+        stealth: 92,
+        flying: 98,
+        driving: 96,
+      },
+    },
     tokens: {
       '--bg': '#1a0f22',
       '--bg-2': '#3b1f4a',
@@ -300,6 +434,7 @@ export const ERAS: Record<string, EraSpec> = {
       projects: 'CASE STUDIES',
       experience: 'TIMELINE',
       achievements: 'MILESTONES',
+      academy: 'EDUCATION',
       contact: 'LINK UP',
       cta: 'ENTER LEONIDA',
     },
@@ -309,3 +444,4 @@ export const ERAS: Record<string, EraSpec> = {
 export const ERA_ORDER = ['three', 'viceCity', 'sanAndreas', 'four', 'five', 'six'];
 export const DEFAULT_ERA = 'five';
 export const GTA_ERAS: EraSpec[] = ERA_ORDER.map((id) => ERAS[id]);
+
