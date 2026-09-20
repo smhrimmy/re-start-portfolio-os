@@ -1,164 +1,261 @@
-export interface EraSpec {
-  id: string;
-  name: string;
-  shortName: string;
-  year: string;
-  accent: string;
-  bg: string;
-  panelBg: string;
-  panelBorder: string;
-  fontDisplay: string;
-  fontBody: string;
-  voice: string;
-  tagline: string;
-  characterBadge: string;
-  assetPak: string;
-  hudStyle: 'chunky' | 'neon' | 'stencil' | 'gritty' | 'flat' | 'glass';
-  labels: {
-    projects: string;
-    skills: string;
-    experience: string;
-    contact: string;
-  };
+export interface EraTokens {
+  '--bg': string;
+  '--bg-2': string;
+  '--panel': string;
+  '--accent': string;
+  '--accent-2': string;
+  '--text': string;
+  '--text-dim': string;
+  '--glow': string;
+  '--radius': string;
+  '--border': string;
+  '--grain': string;
+  '--font-display': string;
+  '--font-body': string;
+  '--tracking': string;
+  '--blur': string;
 }
 
-export const GTA_ERAS: EraSpec[] = [
-  {
-    id: 'iii',
-    name: 'GTA III',
-    shortName: 'III',
+export interface EraLabels {
+  skills: string;
+  projects: string;
+  experience: string;
+  achievements: string;
+  contact: string;
+  cta: string;
+}
+
+export interface EraSpec {
+  id: string;
+  code: string;
+  label: string;
+  year: string;
+  tagline: string;
+  character: string;
+  backdrop: string;
+  minimap: string;
+  sfx?: string;
+  tokens: EraTokens;
+  labels: EraLabels;
+}
+
+export const ERAS: Record<string, EraSpec> = {
+  three: {
+    id: 'three',
+    code: 'III',
+    label: 'LIBERTY CITY',
     year: '2001',
-    accent: '#D9531E',
-    bg: '#14181F',
-    panelBg: 'rgba(20, 24, 31, 0.9)',
-    panelBorder: 'rgba(217, 83, 30, 0.4)',
-    fontDisplay: '"Trebuchet MS", "Impact", sans-serif',
-    fontBody: '"Inter", sans-serif',
-    voice: 'Terse & Grim',
-    tagline: 'JOB COMPLETE.',
-    characterBadge: 'LIBERTY CITY SILENT OPERATOR',
-    assetPak: 'STREAMING ASSETS: LIBERTY_CITY_2001.PAK',
-    hudStyle: 'chunky',
+    tagline: 'KEEP YOUR HEAD DOWN',
+    character: '/assets/character-reference.png',
+    backdrop: 'radial-gradient(ellipse at center, #1E2228 0%, #15181C 100%)',
+    minimap: '/art/map-liberty.webp',
+    tokens: {
+      '--bg': '#15181c',
+      '--bg-2': '#1e2228',
+      '--panel': 'rgba(30,34,40,0.92)',
+      '--accent': '#c8552b',
+      '--accent-2': '#8c8f94',
+      '--text': '#e6e6e6',
+      '--text-dim': '#8a8f96',
+      '--glow': '0 0 0 rgba(0,0,0,0)',
+      '--radius': '0px',
+      '--border': '2px solid #3a4048',
+      '--grain': '0.28',
+      '--font-display': "'Oswald', 'Arial Narrow', sans-serif",
+      '--font-body': "'Roboto Condensed', sans-serif",
+      '--tracking': '0.06em',
+      '--blur': '0px',
+    },
     labels: {
-      projects: 'MISSIONS',
       skills: 'STATS',
-      experience: 'CRIME LOG',
-      contact: 'PAGER UPLINK',
+      projects: 'MISSIONS',
+      experience: 'RAP SHEET',
+      achievements: 'REWARDS',
+      contact: 'PAYPHONE',
+      cta: 'START GAME',
     },
   },
-  {
-    id: 'vc',
-    name: 'Vice City',
-    shortName: 'VC',
+
+  viceCity: {
+    id: 'viceCity',
+    code: 'VC',
+    label: 'VICE CITY',
     year: '1986',
-    accent: '#FF007F',
-    bg: '#0E081C',
-    panelBg: 'rgba(14, 8, 28, 0.85)',
-    panelBorder: 'rgba(255, 0, 127, 0.5)',
-    fontDisplay: '"Brush Script MT", "Caveat", cursive',
-    fontBody: '"Inter", sans-serif',
-    voice: 'Flashy & Neon',
-    tagline: 'STAY LEGENDARY.',
-    characterBadge: 'VICE CITY EXECUTIVE PRODUCER',
-    assetPak: 'STREAMING ASSETS: VICE_CITY_1986.PAK',
-    hudStyle: 'neon',
-    labels: {
-      projects: 'ASSETS & DEALS',
-      skills: 'REPUTATION',
-      experience: 'EMPIRE TIMELINE',
-      contact: 'RADIO TRANSMISSION',
+    tagline: 'STAY LEGENDARY',
+    character: '/assets/character-reference.png',
+    backdrop: 'radial-gradient(ellipse at center, #2A1052 0%, #160B2E 100%)',
+    minimap: '/art/map-vice.webp',
+    tokens: {
+      '--bg': '#160b2e',
+      '--bg-2': '#2a1052',
+      '--panel': 'rgba(28,10,55,0.78)',
+      '--accent': '#ff3fb4',
+      '--accent-2': '#25e6f0',
+      '--text': '#ffffff',
+      '--text-dim': '#c7a8ff',
+      '--glow': '0 0 18px rgba(255,63,180,0.65)',
+      '--radius': '10px',
+      '--border': '2px solid #ff3fb4',
+      '--grain': '0.10',
+      '--font-display': "'Monoton', 'Righteous', cursive",
+      '--font-body': "'Rajdhani', sans-serif",
+      '--tracking': '0.10em',
+      '--blur': '6px',
     },
-  },
-  {
-    id: 'sa',
-    name: 'San Andreas',
-    shortName: 'SA',
-    year: '1992',
-    accent: '#FFD700',
-    bg: '#12160C',
-    panelBg: 'rgba(18, 22, 12, 0.9)',
-    panelBorder: 'rgba(255, 215, 0, 0.4)',
-    fontDisplay: '"Impact", "Arial Black", sans-serif',
-    fontBody: '"Inter", sans-serif',
-    voice: 'Streetwise & Bold',
-    tagline: 'RESPECT +15',
-    characterBadge: 'SAN ANDREAS CHIEF ARCHITECT',
-    assetPak: 'STREAMING ASSETS: SAN_ANDREAS_1992.PAK',
-    hudStyle: 'stencil',
     labels: {
-      projects: 'TURF & HEISTS',
-      skills: 'RESPECT & STATS',
-      experience: 'HOOD HISTORY',
-      contact: 'PAYPHONE DIAL',
-    },
-  },
-  {
-    id: 'iv',
-    name: 'GTA IV',
-    shortName: 'IV',
-    year: '2008',
-    accent: '#FFBF00',
-    bg: '#0D0F12',
-    panelBg: 'rgba(13, 15, 18, 0.92)',
-    panelBorder: 'rgba(255, 191, 0, 0.35)',
-    fontDisplay: '"Georgia", "Playfair Display", serif',
-    fontBody: '"Inter", sans-serif',
-    voice: 'Cynical & Gritty',
-    tagline: 'CONTRACT FULFILLED.',
-    characterBadge: 'LIBERTY CITY VETERAN DEVELOPER',
-    assetPak: 'STREAMING ASSETS: LIBERTY_CITY_2008.PAK',
-    hudStyle: 'gritty',
-    labels: {
-      projects: 'CONTRACTS',
-      skills: 'CAPABILITIES',
-      experience: 'DOSSIER LOG',
-      contact: 'CELLULAR UPLINK',
-    },
-  },
-  {
-    id: 'v',
-    name: 'GTA V',
-    shortName: 'V',
-    year: '2013',
-    accent: '#FF6600',
-    bg: '#0A0B0E',
-    panelBg: 'rgba(10, 11, 14, 0.9)',
-    panelBorder: 'rgba(255, 102, 0, 0.4)',
-    fontDisplay: '"Oswald", "Bebas Neue", sans-serif',
-    fontBody: '"Inter", sans-serif',
-    voice: 'Corporate Satire',
-    tagline: 'MISSION PASSED',
-    characterBadge: 'LOS SANTOS CREATIVE DIRECTOR',
-    assetPak: 'STREAMING ASSETS: LOS_SANTOS_2013.PAK',
-    hudStyle: 'flat',
-    labels: {
-      projects: 'CASE STUDIES',
       skills: 'SKILLS TREE',
-      experience: 'CAREER HISTORY',
-      contact: 'CONTACT CONSOLE',
+      projects: 'CASE STUDIES',
+      experience: 'EXPERIENCE LOG',
+      achievements: 'TROPHIES',
+      contact: 'CONTACT SAFE',
+      cta: 'START GAME',
     },
   },
-  {
-    id: 'vi',
-    name: 'GTA VI',
-    shortName: 'VI',
-    year: '2025',
-    accent: '#00E5FF',
-    bg: '#080A14',
-    panelBg: 'rgba(8, 10, 20, 0.75)',
-    panelBorder: 'rgba(0, 229, 255, 0.45)',
-    fontDisplay: '"Satoshi", "Inter", sans-serif',
-    fontBody: '"Inter", sans-serif',
-    voice: 'Optimistic & Next-Gen',
-    tagline: 'LEVEL UP.',
-    characterBadge: 'LEONIDA NEXT-GEN ARCHITECT',
-    assetPak: 'STREAMING ASSETS: LEONIDA_2025.PAK',
-    hudStyle: 'glass',
+
+  sanAndreas: {
+    id: 'sanAndreas',
+    code: 'SA',
+    label: 'SAN ANDREAS',
+    year: '1992',
+    tagline: 'RESPECT IS EARNED',
+    character: '/assets/character-reference.png',
+    backdrop: 'radial-gradient(ellipse at center, #2B3318 0%, #181C10 100%)',
+    minimap: '/art/map-sa.webp',
+    tokens: {
+      '--bg': '#181c10',
+      '--bg-2': '#2b3318',
+      '--panel': 'rgba(24,28,16,0.90)',
+      '--accent': '#9ecb3c',
+      '--accent-2': '#e8b13a',
+      '--text': '#f2f0e2',
+      '--text-dim': '#9aa27a',
+      '--glow': '0 0 8px rgba(158,203,60,0.35)',
+      '--radius': '3px',
+      '--border': '3px solid #6d7a32',
+      '--grain': '0.22',
+      '--font-display': "'Permanent Marker', 'Impact', cursive",
+      '--font-body': "'Barlow Condensed', sans-serif",
+      '--tracking': '0.04em',
+      '--blur': '0px',
+    },
     labels: {
-      projects: 'SPATIAL PORTALS',
-      skills: 'NEXT-GEN MATRIX',
-      experience: 'PROGRESSION TIMELINE',
-      contact: 'QUANTUM TRANSMISSION',
+      skills: 'RESPECT',
+      projects: 'TERRITORIES',
+      experience: 'HISTORY',
+      achievements: 'STREET CRED',
+      contact: 'HOMIES',
+      cta: 'START GAME',
     },
   },
-];
+
+  four: {
+    id: 'four',
+    code: 'IV',
+    label: 'LIBERTY CITY',
+    year: '2008',
+    tagline: 'THE AMERICAN DREAM, ALLEGEDLY',
+    character: '/assets/character-reference.png',
+    backdrop: 'radial-gradient(ellipse at center, #1B2229 0%, #12161A 100%)',
+    minimap: '/art/map-liberty-hd.webp',
+    tokens: {
+      '--bg': '#12161a',
+      '--bg-2': '#1b2229',
+      '--panel': 'rgba(18,22,26,0.88)',
+      '--accent': '#d9a441',
+      '--accent-2': '#6f8ba3',
+      '--text': '#dfe4e8',
+      '--text-dim': '#7b8894',
+      '--glow': '0 0 10px rgba(217,164,65,0.25)',
+      '--radius': '2px',
+      '--border': '1px solid #38424c',
+      '--grain': '0.34',
+      '--font-display': "'Bebas Neue', sans-serif",
+      '--font-body': "'Inter', sans-serif",
+      '--tracking': '0.08em',
+      '--blur': '2px',
+    },
+    labels: {
+      skills: 'ABILITIES',
+      projects: 'CONTRACTS',
+      experience: 'CRIMINAL RECORD',
+      achievements: 'ACCOLADES',
+      contact: 'PHONE',
+      cta: 'START GAME',
+    },
+  },
+
+  five: {
+    id: 'five',
+    code: 'V',
+    label: 'LOS SANTOS',
+    year: '2013',
+    tagline: 'BUILD DIFFERENT',
+    character: '/assets/character-reference.png',
+    backdrop: 'radial-gradient(ellipse at center, #1F2228 0%, #0D0F12 100%)',
+    minimap: '/art/map-losantos.webp',
+    tokens: {
+      '--bg': '#0d0f12',
+      '--bg-2': '#f4f4f2',
+      '--panel': 'rgba(255,255,255,0.96)',
+      '--accent': '#f2a01d',
+      '--accent-2': '#2f9e6e',
+      '--text': '#101214',
+      '--text-dim': '#6b7075',
+      '--glow': '0 4px 24px rgba(0,0,0,0.18)',
+      '--radius': '4px',
+      '--border': '0px solid transparent',
+      '--grain': '0.04',
+      '--font-display': "'Archivo Black', sans-serif",
+      '--font-body': "'Archivo', sans-serif",
+      '--tracking': '0.02em',
+      '--blur': '0px',
+    },
+    labels: {
+      skills: 'SKILLS TREE',
+      projects: 'HEISTS',
+      experience: 'CAREER LOG',
+      achievements: 'AWARDS',
+      contact: 'CONTACTS',
+      cta: 'START GAME',
+    },
+  },
+
+  six: {
+    id: 'six',
+    code: 'VI',
+    label: 'LEONIDA',
+    year: '2025',
+    tagline: 'THE NEXT CHAPTER',
+    character: '/assets/character-reference.png',
+    backdrop: 'radial-gradient(ellipse at center, #3B1F4A 0%, #1A0F22 100%)',
+    minimap: '/art/map-leonida.webp',
+    tokens: {
+      '--bg': '#1a0f22',
+      '--bg-2': '#3b1f4a',
+      '--panel': 'rgba(255,255,255,0.10)',
+      '--accent': '#ff7a59',
+      '--accent-2': '#4fd6c8',
+      '--text': '#fff6f0',
+      '--text-dim': '#d7b8c8',
+      '--glow': '0 8px 40px rgba(255,122,89,0.28)',
+      '--radius': '18px',
+      '--border': '1px solid rgba(255,255,255,0.22)',
+      '--grain': '0.06',
+      '--font-display': "'Clash Display', 'Sora', sans-serif",
+      '--font-body': "'Sora', sans-serif",
+      '--tracking': '0.14em',
+      '--blur': '22px',
+    },
+    labels: {
+      skills: 'SKILL MATRIX',
+      projects: 'CASE STUDIES',
+      experience: 'TIMELINE',
+      achievements: 'MILESTONES',
+      contact: 'LINK UP',
+      cta: 'ENTER LEONIDA',
+    },
+  },
+};
+
+export const ERA_ORDER = ['three', 'viceCity', 'sanAndreas', 'four', 'five', 'six'];
+export const DEFAULT_ERA = 'five';
